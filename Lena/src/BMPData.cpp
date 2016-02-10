@@ -71,6 +71,12 @@ BMPData::BMPData(const std::vector<unsigned char>& data,
     _stFileHeader.bfSize = _stFileHeader.bfOffBits + _stInfoHeader.biSizeImage;
 }
 
+BMPData::BMPData(const IImageData& rSource) : IImageData(rSource),
+                                              _type(TYPE_INVALID),
+                                              _pColorMapData(NULL) {
+
+}
+
 BMPData::~BMPData() throw() {
     if (_pColorMapData && !_isOutputFile) {
         delete _pColorMapData;

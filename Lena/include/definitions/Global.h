@@ -44,5 +44,6 @@ typedef struct {
 #define MAX_POSIBLE_PIXEL_VALUE      255
 
 #define PADDING_ADJUSTMENT           4
+#define REDUDANCY_PER_BINARY_PIXEL   3
 
 #endif /* INCLUDE_GLOBAL_H_ */

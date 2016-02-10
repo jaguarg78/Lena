@@ -28,6 +28,7 @@ public:
 	        int iHeight,
 	        Type type = TYPE_BINARY,
 	        const std::vector<PixelTable> *pColormap = NULL);
+	BMPData(const IImageData& rSource);
 	virtual ~BMPData() throw();
 
 protected:

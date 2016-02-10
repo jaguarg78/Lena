@@ -24,7 +24,7 @@ void GenericImage::init() {
 
 void GenericImage::create(const std::string& sFileName,
                           bool invert) {
-    // Nothing to do
+    _pimImage = new QImage(sFileName.c_str());
 }
 
 std::string GenericImage::getFileName() const {

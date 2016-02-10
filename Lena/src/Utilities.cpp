@@ -41,10 +41,10 @@ double Utilities::MSE_RGB(const IImageData& rBMPInputImage,
 
     double dErrorAccumulated = 0.0;
     for (unsigned int uiByteIndex = 0; uiByteIndex < rBMPOutputImage.getDataSize(); uiByteIndex++) {
-        std::cout << (double) rBMPInputImage.getData()[uiByteIndex] -
-                     (double) rBMPOutputImage.getData()[uiByteIndex] << " ";
-        dErrorAccumulated += std::pow((double) rBMPInputImage.getData()[uiByteIndex] -
-                                          (double) rBMPOutputImage.getData()[uiByteIndex],
+        std::cout << (double) rBMPInputImage.getConstData()[uiByteIndex] -
+                     (double) rBMPOutputImage.getConstData()[uiByteIndex] << " ";
+        dErrorAccumulated += std::pow((double) rBMPInputImage.getConstData()[uiByteIndex] -
+                                          (double) rBMPOutputImage.getConstData()[uiByteIndex],
                                       2.0);
     }
 
@@ -99,8 +99,8 @@ double Utilities::BCR(const IImageData& rBMPInputLogo,
 
             char cWatermarkingInputByte;
             char cWatermarkingOutputByte;
-            std::memcpy(&cWatermarkingInputByte, &rBMPInputLogo.getData()[uiByteIndex], sizeof(char));
-            std::memcpy(&cWatermarkingOutputByte, &rBMPOutputLogo.getData()[uiByteIndex], sizeof(char));
+            std::memcpy(&cWatermarkingInputByte, &rBMPInputLogo.getConstData()[uiByteIndex], sizeof(char));
+            std::memcpy(&cWatermarkingOutputByte, &rBMPOutputLogo.getConstData()[uiByteIndex], sizeof(char));
 
             /* Bit counter */
             for (unsigned short usWatermarkBit = 0; usWatermarkBit < CHAR_BIT; usWatermarkBit++) {

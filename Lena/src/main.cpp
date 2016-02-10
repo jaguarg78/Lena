@@ -177,45 +177,47 @@ int main(int argc, char *argv[]) {
 //        GenericImage::createRGB888Image("images/test020.jpg", 512, 512, dataVector3.data(), "JPG", 20);
 //        GenericImage::createRGB888Image("images/test010.jpg", 512, 512, dataVector3.data(), "JPG", 10);
 
-	    std::vector<unsigned char> vec1;
-	    vec1.push_back(43);
-	    vec1.push_back(43);
-	    vec1.push_back(43);
-	    vec1.push_back(43);
-	    vec1.push_back(43);
-	    vec1.push_back(43);
-	    vec1.push_back(54);
-	    vec1.push_back(54);
-	    vec1.push_back(54);
-	    vec1.push_back(51);
-	    vec1.push_back(51);
-	    vec1.push_back(51);
-	    TestImageData test1("test1",
-	                        2,
-	                        2,
-	                        vec1);
-	    std::cout << test1 << std::endl;
+//	    std::vector<unsigned char> vec1;
+//	    vec1.push_back(43);
+//	    vec1.push_back(43);
+//	    vec1.push_back(43);
+//	    vec1.push_back(43);
+//	    vec1.push_back(43);
+//	    vec1.push_back(43);
+//	    vec1.push_back(54);
+//	    vec1.push_back(54);
+//	    vec1.push_back(54);
+//	    vec1.push_back(51);
+//	    vec1.push_back(51);
+//	    vec1.push_back(51);
+//	    TestImageData test1("test1",
+//	                        2,
+//	                        2,
+//	                        vec1);
+//	    std::cout << test1 << std::endl;
+//
+//	    std::vector<unsigned char> vec2;
+//        vec2.push_back(38);
+//        vec2.push_back(38);
+//        vec2.push_back(38);
+//        vec2.push_back(38);
+//        vec2.push_back(38);
+//        vec2.push_back(38);
+//        vec2.push_back(59);
+//        vec2.push_back(59);
+//        vec2.push_back(59);
+//        vec2.push_back(54);
+//        vec2.push_back(54);
+//        vec2.push_back(54);
+//        TestImageData test2("test2",
+//                            2,
+//                            2,
+//                            vec2);
+//        std::cout << test2 << std::endl;
+//
+//        std::cout << Utilities::PSNR_RGB(test1, test2) << std::endl;
 
-	    std::vector<unsigned char> vec2;
-        vec2.push_back(38);
-        vec2.push_back(38);
-        vec2.push_back(38);
-        vec2.push_back(38);
-        vec2.push_back(38);
-        vec2.push_back(38);
-        vec2.push_back(59);
-        vec2.push_back(59);
-        vec2.push_back(59);
-        vec2.push_back(54);
-        vec2.push_back(54);
-        vec2.push_back(54);
-        TestImageData test2("test2",
-                            2,
-                            2,
-                            vec2);
-        std::cout << test2 << std::endl;
 
-        std::cout << Utilities::PSNR_RGB(test1, test2) << std::endl;
 
         std::cout << "The End!!!" << std::endl;
 

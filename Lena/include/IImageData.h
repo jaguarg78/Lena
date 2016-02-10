@@ -19,10 +19,13 @@ class IImageData {
 public:
     IImageData(const std::string& sFileName);
     IImageData(const std::vector<unsigned char>& data, int iWidth, int iHeight);
+    IImageData(const IImageData& rSource);
     virtual ~IImageData() throw ();
 
     std::string getFileName() const;
-    const unsigned char *getData() const;
+
+    unsigned char *getData() const;
+    const unsigned char *getConstData() const;
 
     int getWidth() const;
     int getHeight() const;
@@ -62,7 +65,8 @@ protected:
     std::ifstream   _ifImageFile;
     std::ofstream   _ofImageFile;
 
-    bool _isOutputFile;
+    bool            _isOutputFile;
+    bool            _hasOwnData;
 private:
 
 };

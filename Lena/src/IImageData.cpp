@@ -13,7 +13,8 @@ IImageData::IImageData(const std::string& sFileName) : _sFileName(sFileName),
                                                        _iWidth(0),
                                                        _iHeight(0),
                                                        _pcData(NULL),
-                                                       _isOutputFile(false) {
+                                                       _isOutputFile(false),
+                                                       _hasOwnData(true) {
 
 }
 
@@ -25,12 +26,25 @@ IImageData::IImageData(const std::vector<unsigned char>& data,
                                       _iWidth(iWidth),
                                       _iHeight(iHeight),
                                       _pcData(const_cast<unsigned char *>(data.data())),
-                                      _isOutputFile(true) {
+                                      _isOutputFile(true),
+                                      _hasOwnData(false) {
 
 }
 
+IImageData::IImageData(const IImageData& rSource) : _sFileName("out." + rSource.getFileName()),
+                                                    _uiFileSize(0),
+                                                    _uiDataSize(rSource.getDataSize()),
+                                                    _iWidth(rSource.getWidth()),
+                                                    _iHeight(rSource.getHeight()),
+                                                    _pcData(NULL),
+                                                    _isOutputFile(true),
+                                                    _hasOwnData(true) {
+    _pcData = new unsigned char[rSource.getDataSize()];
+    std::memcpy(_pcData, rSource.getData(), rSource.getDataSize());
+}
+
 IImageData::~IImageData() throw() {
-	if (_pcData && !_isOutputFile) {
+	if (_pcData && _hasOwnData) {
 		delete [] _pcData;
 		_pcData = NULL;
 	}
@@ -142,6 +156,10 @@ unsigned int IImageData::getRowSizeFixed() const {
     return ((getBitCount() * getWidth() + 31) / 32) * 4;
 }
 
-const unsigned char *IImageData::getData() const {
+unsigned char *IImageData::getData() const {
+    return _pcData;
+}
+
+const unsigned char *IImageData::getConstData() const {
     return _pcData;
 }
