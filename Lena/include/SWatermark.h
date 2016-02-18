@@ -14,6 +14,8 @@ class SWatermark: public Watermark {
 public:
     SWatermark(int iWidth,
                int iHeight,
+               unsigned int iRedundancy = 1,
+               unsigned int iIterations = 1,
                int iDelta = 0);
     virtual ~SWatermark() throw();
 

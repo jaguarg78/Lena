@@ -10,12 +10,16 @@
 //using Eigen::MatrixXd;
 
 Watermark::Watermark(int iWidth,
-                     int iHeight) : _iWidth(iWidth),
-                                    _iHeight(iHeight),
-                                    _pucInputImageData(NULL),
-//                                    _pucInputLogoData(NULL),
-                                    _pucOutputImageData(NULL),
-                                    _pucOutputLogoData(NULL) {
+                     int iHeight,
+                     unsigned int iRedundancy,
+                     unsigned int iIterations) : _iWidth(iWidth),
+                                                 _iHeight(iHeight),
+                                                 _iRedundancy(iRedundancy),
+                                                 _iIterations(iIterations),
+                                                 _pucInputImageData(NULL),
+//                                                 _pucInputLogoData(NULL),
+                                                 _pucOutputImageData(NULL),
+                                                 _pucOutputLogoData(NULL) {
 	// TODO Auto-generat_ed constructor stub
 
 }

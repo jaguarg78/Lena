@@ -9,7 +9,12 @@
 
 SWatermark::SWatermark(int iWidth,
                        int iHeight,
-                       int iDelta) : Watermark(iWidth, iHeight),
+                       unsigned int iRedundancy,
+                       unsigned int iIterations,
+                       int iDelta) : Watermark(iWidth,
+                                               iHeight,
+                                               iRedundancy,
+                                               iIterations),
                                      _iDelta(iDelta){
     // TODO Auto-generated constructor stub
 }

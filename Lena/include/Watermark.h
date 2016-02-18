@@ -19,7 +19,9 @@
 class Watermark {
 public:
 	Watermark(int iWidth,
-              int iHeight);
+              int iHeight,
+              unsigned int iRedundancy,
+              unsigned int iIterations);
 	virtual ~Watermark() throw();
 
 	virtual void progressInsertion() = 0;
@@ -49,6 +51,8 @@ protected:
 
 	int				 _iWidth;
 	int				 _iHeight;
+	unsigned int     _iRedundancy;
+	unsigned int     _iIterations;
 	unsigned char 	*_pucInputImageData;
 //	unsigned char 	*_pucInputLogoData;
 	unsigned char 	*_pucOutputImageData;
