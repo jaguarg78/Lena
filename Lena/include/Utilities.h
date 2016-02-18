@@ -17,13 +17,19 @@ class IImageData;
 
 class Utilities {
 public:
+    enum GRAY_CALC {
+        GRAY_MEAN,
+        GRAY_LIGHTNESS,
+        GRAY_LUMINOSITY
+    };
     static double MSE_RGB(const IImageData& rBMPRawImage,
                           const IImageData& rBMPModifiedImage);
     static double PSNR_RGB(const IImageData& rBMPRawImage,
                            const IImageData& rBMPModifiedImage);
-
     static double BCR(const IImageData& rBMPInputLogo,
                       const IImageData& rBMPOutputLogo);
+    static void toGrayScale(IImageData& rBMPRawImage,
+                            GRAY_CALC eGrayCalc = GRAY_LUMINOSITY);
 private:
     Utilities();
     virtual ~Utilities();

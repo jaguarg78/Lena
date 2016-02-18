@@ -85,6 +85,8 @@ BMPData::~BMPData() throw() {
 }
 
 unsigned short BMPData::getBitCount() const {
+//    std::cout << "getBitCount" << std::endl;
+//    std::cout << _type << std::endl;
     switch (_type) {
     case TYPE_BINARY:
         return BIT_COUNT_BINARY_IMAGE;
@@ -111,9 +113,15 @@ void BMPData::parseFileData() {
 
 	std::cout << "*********" << _stInfoHeader.biBitCount << std::endl;
 	// Verify image bit count
-	if (!(_stInfoHeader.biBitCount == BIT_COUNT_BINARY_IMAGE ||
-		  _stInfoHeader.biBitCount == BIT_COUNT_RGB_IMAGE)) {
-		throw ImageException::NotSuppertedDepthException();
+	switch (_stInfoHeader.biBitCount) {
+	case BIT_COUNT_BINARY_IMAGE:
+	    _type = TYPE_BINARY;
+	    break;
+	case BIT_COUNT_RGB_IMAGE:
+	    _type = TYPE_RGB888;
+	    break;
+	default:
+	    throw ImageException::NotSuppertedDepthException();
 	}
 
 	// Fill Additional information

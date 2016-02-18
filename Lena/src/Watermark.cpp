@@ -11,45 +11,45 @@
 
 Watermark::Watermark(int iWidth,
                      int iHeight) : _iWidth(iWidth),
-                                    _iHeight(iHeight)/*,
+                                    _iHeight(iHeight),
                                     _pucInputImageData(NULL),
-                                    _pucInputLogoData(NULL),
+//                                    _pucInputLogoData(NULL),
                                     _pucOutputImageData(NULL),
-                                    _pucOutputLogoData(NULL)*/ {
+                                    _pucOutputLogoData(NULL) {
 	// TODO Auto-generat_ed constructor stub
 
 }
 
 Watermark::~Watermark() throw() {
-//	if (_pucInputImageData) {
-//		delete[] _pucInputImageData;
-//		_pucInputImageData = NULL;
-//	}
-//
+	if (_pucInputImageData) {
+		delete[] _pucInputImageData;
+		_pucInputImageData = NULL;
+	}
+
 //	if (_pucInputLogoData) {
 //		delete[] _pucInputLogoData;
 //		_pucInputLogoData = NULL;
 //	}
-//
-//	if (_pucOutputImageData) {
-//		delete[] _pucOutputImageData;
-//		_pucOutputImageData = NULL;
-//	}
-//
-//	if (_pucOutputLogoData) {
-//		delete[] _pucOutputLogoData;
-//		_pucOutputLogoData = NULL;
-//	}
+
+	if (_pucOutputImageData) {
+		delete[] _pucOutputImageData;
+		_pucOutputImageData = NULL;
+	}
+
+	if (_pucOutputLogoData) {
+		delete[] _pucOutputLogoData;
+		_pucOutputLogoData = NULL;
+	}
 }
 
 int Watermark::insertLogo(const IImageData& hostImage,
                           const IImageData& logoImage) {
-
     if (!isEmbeddable(hostImage,
                       logoImage)) {
         // TODO throw exception!!!!!
     }
 
+    _pucInputImageData = hostImage.getData();
     /*
      * The logo image will be traversed in order to embed each pixel into the host image
      * depending on each algorithm
@@ -59,10 +59,10 @@ int Watermark::insertLogo(const IImageData& hostImage,
      * uiHLogoByte : Horizontal coordinate of binary image logo in bytes
      */
     for (int uiVLogo = 0;
-             uiVLogo < logoImage.getHeight();
+             uiVLogo < 1;//logoImage.getHeight();
              uiVLogo++) {
         for (unsigned int uiHLogoByte = 0;
-                          uiHLogoByte < logoImage.getRowSizeFixed();
+                          uiHLogoByte < 1;//logoImage.getRowSizeFixed();
                           uiHLogoByte++) {
             /* Byte Index into binary image logo Data */
             unsigned int uiByteIndex = (uiVLogo * logoImage.getRowSizeFixed()) +
@@ -71,7 +71,7 @@ int Watermark::insertLogo(const IImageData& hostImage,
             unsigned char ucLogoByte = logoImage.getConstData()[uiByteIndex];
             /* Pixel by byte */
             for (unsigned short usBitPixelIndex = 0;
-                                usBitPixelIndex < CHAR_BIT;
+                                usBitPixelIndex < 1;//CHAR_BIT;
                                 usBitPixelIndex++) {
 
                 unsigned char ucPixelBitValue = (ucLogoByte & 0x80) >> 0x07;

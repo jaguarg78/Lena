@@ -49,10 +49,10 @@ protected:
 
 	int				 _iWidth;
 	int				 _iHeight;
-//	unsigned char 	*_pucInputImageData;
+	unsigned char 	*_pucInputImageData;
 //	unsigned char 	*_pucInputLogoData;
-//	unsigned char 	*_pucOutputImageData;
-//	unsigned char 	*_pucOutputLogoData;
+	unsigned char 	*_pucOutputImageData;
+	unsigned char 	*_pucOutputLogoData;
 private:
 	Watermark();
 	Watermark(const Watermark& rSource);

@@ -152,6 +152,9 @@ unsigned int IImageData::getDataSize() const {
 }
 
 unsigned int IImageData::getRowSizeFixed() const {
+//    std::cout << "getRowSizeFixed" << std::endl;
+//    std::cout << getBitCount() << std::endl;
+//    std::cout << getWidth() << std::endl;
     // floor function is not necessary because this is an operation between ints
     return ((getBitCount() * getWidth() + 31) / 32) * 4;
 }

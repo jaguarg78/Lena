@@ -117,3 +117,47 @@ double Utilities::BCR(const IImageData& rBMPInputLogo,
 
     return (((double) accumulate) / (rBMPInputLogo.getHeight() * rBMPInputLogo.getWidth())) * 100;
 }
+
+void Utilities::toGrayScale(IImageData& rBMPRawImage,
+                            GRAY_CALC eGrayCalc) {
+    // Warning!!!! Validate Depth. It only works with RGB888
+    for (int iHeight = 0; iHeight < rBMPRawImage.getHeight(); iHeight++) {
+        for (int iWidth = 0; iWidth < rBMPRawImage.getWidth(); iWidth++) {
+            unsigned int uiOffset = (iHeight * rBMPRawImage.getRowSizeFixed()) + (iWidth * sizeof(Pixel));
+
+            Pixel pixel;
+            std::memcpy(&pixel,
+                        rBMPRawImage.getData() + uiOffset,
+                        sizeof(Pixel));
+            unsigned char ucGrayLevel = 0x00;
+            switch (eGrayCalc) {
+            case GRAY_MEAN:
+                ucGrayLevel = (unsigned char) round((pixel.byteRed + pixel.byteGreen + pixel.byteBlue) / 3);
+                break;
+            case GRAY_LIGHTNESS:
+                ucGrayLevel = (unsigned char) round((std::min(pixel.byteRed,
+                                                         std::min(pixel.byteGreen,
+                                                                  pixel.byteBlue)) +
+                                                     std::max(pixel.byteRed,
+                                                         std::max(pixel.byteGreen,
+                                                                  pixel.byteBlue))) / 2);
+                break;
+            case GRAY_LUMINOSITY:
+                ucGrayLevel = (unsigned char) round(0.21 * pixel.byteRed +
+                                                    0.72 * pixel.byteGreen +
+                                                    0.07 * pixel.byteBlue);
+                break;
+            default:
+                throw;
+            }
+
+            pixel.byteRed = ucGrayLevel;
+            pixel.byteGreen = ucGrayLevel;
+            pixel.byteBlue = ucGrayLevel;
+
+            std::memcpy(rBMPRawImage.getData() + uiOffset,
+                        &pixel,
+                        sizeof(Pixel));
+        }
+    }
+}
