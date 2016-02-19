@@ -14,9 +14,10 @@ class SWatermark: public Watermark {
 public:
     SWatermark(int iWidth,
                int iHeight,
+               int iDelta = 0,
                unsigned int iRedundancy = 1,
                unsigned int iIterations = 1,
-               int iDelta = 0);
+               Type_Coordinates tyCoordinates = TYPE_ADJACENT);
     virtual ~SWatermark() throw();
 
     virtual void progressInsertion() {}
@@ -25,26 +26,12 @@ public:
 protected:
     virtual bool isEmbeddable(const IImageData& hostImage,
                               const IImageData& logoImage);
-    virtual void insertProcess(const IImageData& hostImage,
-                               unsigned char ucPixelBitValue,
-                               unsigned int uiVLogo,
-                               unsigned int uiHLogoByte,
-                               unsigned short usLogoPixel);
     virtual Eigen::MatrixXd processBlock(const Eigen::MatrixXd& mBlock,
                                          unsigned char ucPixelBitValue);
     int     _iDelta;
 private:
     SWatermark();
     SWatermark(const SWatermark& rSource);
-
-    Eigen::MatrixXd getBlockData(unsigned int uiVBlock,
-                                 unsigned int uiHBlock,
-                                 const IImageData& hostImage);
-
-    void setBlockData(unsigned int uiVBlock,
-                      unsigned int uiHBlock,
-                      IImageData& hostImage,
-                      const Eigen::MatrixXd& mWMBlock);
 };
 
 #endif /* SRC_SWATERMARK_H_ */

@@ -218,25 +218,25 @@ int main(int argc, char *argv[]) {
 //
 //        std::cout << Utilities::PSNR_RGB(test1, test2) << std::endl;
 
-//		SWatermark wm(4,4);
-//		wm.insertLogo(inputImage, logoImage);
-//      std::cout << "The End!!!" << std::endl;
+		SWatermark wm(4, 4, 20, 3);
+		wm.insertLogo(inputImage, logoImage);
+        std::cout << "The End!!!" << std::endl;
 
-		BMPData inputRGB("images/lena_rgb.bmp");
-		inputRGB.init();
-		std::cout << inputRGB << std::endl;
-
-		BMPData outputRGB_1(inputRGB);
-		Utilities::toGrayScale(outputRGB_1, Utilities::GRAY_MEAN);
-		outputRGB_1.create("images/test_1.bmp");
-
-		BMPData outputRGB_2(inputRGB);
-        Utilities::toGrayScale(outputRGB_2, Utilities::GRAY_LIGHTNESS);
-        outputRGB_2.create("images/test_2.bmp");
-
-        BMPData outputRGB_3(inputRGB);
-        Utilities::toGrayScale(outputRGB_3, Utilities::GRAY_LUMINOSITY);
-        outputRGB_3.create("images/test_3.bmp");
+//		  BMPData inputRGB("images/lena_rgb.bmp");
+//		  inputRGB.init();
+//		  std::cout << inputRGB << std::endl;
+//
+//		  BMPData outputRGB_1(inputRGB);
+//		  Utilities::toGrayScale(outputRGB_1, Utilities::GRAY_MEAN);
+//		  outputRGB_1.create("images/test_1.bmp");
+//
+//		  BMPData outputRGB_2(inputRGB);
+//        Utilities::toGrayScale(outputRGB_2, Utilities::GRAY_LIGHTNESS);
+//        outputRGB_2.create("images/test_2.bmp");
+//
+//        BMPData outputRGB_3(inputRGB);
+//        Utilities::toGrayScale(outputRGB_3, Utilities::GRAY_LUMINOSITY);
+//        outputRGB_3.create("images/test_3.bmp");
 
 	} catch (std::exception& e) {
 		std::cerr << "Error. " << e.what() << std::endl;

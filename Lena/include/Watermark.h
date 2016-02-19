@@ -18,10 +18,17 @@
 
 class Watermark {
 public:
+    enum Type_Coordinates {
+        TYPE_ADJACENT,
+        TYPE_RANDOM,
+        TYPE_CODED
+    };
+
 	Watermark(int iWidth,
               int iHeight,
               unsigned int iRedundancy,
-              unsigned int iIterations);
+              unsigned int iIterations,
+              Type_Coordinates tyCoordinates);
 	virtual ~Watermark() throw();
 
 	virtual void progressInsertion() = 0;
@@ -39,13 +46,14 @@ public:
 //	void setOutputImageData(unsigned char *pucOutputImageData);
 //	void setOutputLogoData(unsigned char *pucOutputLogoData);
 protected:
+	struct InsertionData {
+        unsigned char   ucPixelBitValue; // Value to be embedded
+        unsigned int    uiVBlock;         // V Coordinate of logo image
+        unsigned int    uiHBlock;         // H Coordinate of logo image in bytes
+    };
+
 	virtual bool isEmbeddable(const IImageData& hostImage,
                               const IImageData& logoImage) = 0;
-	virtual void insertProcess(const IImageData& hostImage,
-                               unsigned char ucPixelBitValue,
-                               unsigned int uiVLogo,
-                               unsigned int uiHLogoByte,
-                               unsigned short usBitPixelIndex) = 0;
 	virtual Eigen::MatrixXd processBlock(const Eigen::MatrixXd& mBlock,
 	                                     unsigned char ucPixelBitValue) = 0;
 
@@ -57,9 +65,19 @@ protected:
 //	unsigned char 	*_pucInputLogoData;
 	unsigned char 	*_pucOutputImageData;
 	unsigned char 	*_pucOutputLogoData;
+
+	Type_Coordinates _tyCoordinates;
 private:
 	Watermark();
 	Watermark(const Watermark& rSource);
+
+	void insertProcess(const IImageData& hostImage,
+	                   const InsertionData& stInsertionData);
+	Eigen::MatrixXd getBlockData(const IImageData& hostImage,
+                                 const InsertionData& stInsertionData);
+    void setBlockData(IImageData& hostImage,
+                      const InsertionData& stInsertionData,
+                      const Eigen::MatrixXd& mWMBlock);
 };
 
 #endif /* SRC_WATERMARK_H_ */
