@@ -18,6 +18,22 @@ IImageData::IImageData(const std::string& sFileName) : _sFileName(sFileName),
 
 }
 
+IImageData::IImageData(const IImageData& rSource) : _sFileName(
+                                                        rSource.getFileName().insert(
+                                                            rSource.getFileName().find_last_of("."),
+                                                            ".out")),
+                                                    _uiFileSize(0),
+                                                    _uiDataSize(rSource.getDataSize()),
+                                                    _iWidth(rSource.getWidth()),
+                                                    _iHeight(rSource.getHeight()),
+                                                    _isOutputFile(true),
+                                                    _hasOwnData(true) {
+
+
+    _pcData = new unsigned char[rSource.getDataSize()];
+    std::memcpy(_pcData, rSource.getData(), rSource.getDataSize());
+}
+
 IImageData::IImageData(const std::vector<unsigned char>& data,
                        int iWidth,
                        int iHeight) : _sFileName(""),
@@ -31,17 +47,19 @@ IImageData::IImageData(const std::vector<unsigned char>& data,
 
 }
 
-IImageData::IImageData(const IImageData& rSource) : _sFileName("out." + rSource.getFileName()),
-                                                    _uiFileSize(0),
-                                                    _uiDataSize(rSource.getDataSize()),
-                                                    _iWidth(rSource.getWidth()),
-                                                    _iHeight(rSource.getHeight()),
-                                                    _pcData(NULL),
-                                                    _isOutputFile(true),
-                                                    _hasOwnData(true) {
-    _pcData = new unsigned char[rSource.getDataSize()];
-    std::memcpy(_pcData, rSource.getData(), rSource.getDataSize());
+IImageData::IImageData(int iWidth,
+                       int iHeight) : _sFileName(""),
+                                      _uiFileSize(0),
+                                      _uiDataSize(0),
+                                      _iWidth(iWidth),
+                                      _iHeight(iHeight),
+                                      _pcData(NULL),
+                                      _isOutputFile(true),
+                                      _hasOwnData(false) {
+
+
 }
+
 
 IImageData::~IImageData() throw() {
 	if (_pcData && _hasOwnData) {
@@ -86,10 +104,21 @@ void IImageData::init() {
 }
 
 void IImageData::create(const std::string& sFileName,
-                        bool invert) {
-    std::cout << "Creating output_file" << std::endl;
+                        bool bInvert) {
+    // DEBUG
+    std::cout << "**[1] Creating output_file " << sFileName << " "
+              << (bInvert ? "true" : "false") << std::endl;
 
-    if (invert) {
+    _sFileName = sFileName;
+    create(bInvert);
+}
+
+void IImageData::create(bool bInvert) {
+    // DEBUG
+    std::cout << "**[2] Creating output_file " << _sFileName << " "
+              << (bInvert ? "true" : "false") << std::endl;
+
+    if (bInvert) {
         invertData();
     }
 
@@ -97,7 +126,7 @@ void IImageData::create(const std::string& sFileName,
         _ofImageFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
         try {
             _ofImageFile.open(
-                    sFileName.c_str(),
+                    _sFileName.c_str(),
                     std::ios::out | std::ios::binary);
 
             if (_ofImageFile.is_open()) {
@@ -142,6 +171,7 @@ int IImageData::getHeight() const {
 unsigned int IImageData::getDataSize() const {
     if (_isOutputFile) {
         if (getRowSizeFixed() * getWidth() != _uiDataSize) {
+            // TODO
             // Throw exception data size wrong
             std::cout << "Data size wrong" << std::endl;
         }
@@ -152,9 +182,11 @@ unsigned int IImageData::getDataSize() const {
 }
 
 unsigned int IImageData::getRowSizeFixed() const {
+    // DEBUG
 //    std::cout << "getRowSizeFixed" << std::endl;
 //    std::cout << getBitCount() << std::endl;
 //    std::cout << getWidth() << std::endl;
+
     // floor function is not necessary because this is an operation between ints
     return ((getBitCount() * getWidth() + 31) / 32) * 4;
 }

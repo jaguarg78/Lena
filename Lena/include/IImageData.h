@@ -17,9 +17,10 @@
 
 class IImageData {
 public:
+    IImageData(const IImageData& rSource);
     IImageData(const std::string& sFileName);
     IImageData(const std::vector<unsigned char>& data, int iWidth, int iHeight);
-    IImageData(const IImageData& rSource);
+    IImageData(int iWidth, int iHeight);
     virtual ~IImageData() throw ();
 
     std::string getFileName() const;
@@ -33,8 +34,9 @@ public:
     unsigned int getRowSizeFixed() const;
 
     virtual void init();
+    virtual void create(bool bInvert = false);
     virtual void create(const std::string& sFileName,
-                        bool invert = false);
+                        bool bInvert = false);
 
     friend std::ostream& operator<<(std::ostream& os, IImageData& data) {
         os << "*********************************" << std::endl;
@@ -68,7 +70,7 @@ protected:
     bool            _isOutputFile;
     bool            _hasOwnData;
 private:
-
+    IImageData();
 };
 
 #endif /* IIMAGEDATA_H_ */

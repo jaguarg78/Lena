@@ -13,7 +13,7 @@
 #include "GenericImage.h"
 #include "TestImageData.h"
 #include "Utilities.h"
-#include "SWatermark.h"
+#include "WMProcess.h"
 
 #define SHOWN_PIXELS    12
 #define INIT_PIXEL      30
@@ -34,6 +34,12 @@ int main(int argc, char *argv[]) {
 		BMPData logoImage("images/Test_32x32_BI.bmp");
 		logoImage.init();
 		std::cout << logoImage << std::endl;
+
+		BMPData hostImage(inputImage);
+		std::cout << hostImage << std::endl;
+
+        BMPData logoOutImage(32, 32);
+        std::cout << logoOutImage << std::endl;
 //
 //		BMPData testImage("images/rgb-Base_48x48.bmp");
 //		testImage.init();
@@ -178,26 +184,26 @@ int main(int argc, char *argv[]) {
 //        GenericImage::createRGB888Image("images/test020.jpg", 512, 512, dataVector3.data(), "JPG", 20);
 //        GenericImage::createRGB888Image("images/test010.jpg", 512, 512, dataVector3.data(), "JPG", 10);
 
-//	    std::vector<unsigned char> vec1;
-//	    vec1.push_back(43);
-//	    vec1.push_back(43);
-//	    vec1.push_back(43);
-//	    vec1.push_back(43);
-//	    vec1.push_back(43);
-//	    vec1.push_back(43);
-//	    vec1.push_back(54);
-//	    vec1.push_back(54);
-//	    vec1.push_back(54);
-//	    vec1.push_back(51);
-//	    vec1.push_back(51);
-//	    vec1.push_back(51);
-//	    TestImageData test1("test1",
-//	                        2,
-//	                        2,
-//	                        vec1);
-//	    std::cout << test1 << std::endl;
+//	      std::vector<unsigned char> vec1;
+//	      vec1.push_back(43);
+//	      vec1.push_back(43);
+//	      vec1.push_back(43);
+//	      vec1.push_back(43);
+//	      vec1.push_back(43);
+//	      vec1.push_back(43);
+//	      vec1.push_back(54);
+//	      vec1.push_back(54);
+//	      vec1.push_back(54);
+//	      vec1.push_back(51);
+//	      vec1.push_back(51);
+//	      vec1.push_back(51);
+//	      TestImageData test1("test1",
+//	                          2,
+//	                          2,
+//	                          vec1);
+//	      std::cout << test1 << std::endl;
 //
-//	    std::vector<unsigned char> vec2;
+//	      std::vector<unsigned char> vec2;
 //        vec2.push_back(38);
 //        vec2.push_back(38);
 //        vec2.push_back(38);
@@ -218,9 +224,9 @@ int main(int argc, char *argv[]) {
 //
 //        std::cout << Utilities::PSNR_RGB(test1, test2) << std::endl;
 
-		SWatermark wm(4, 4, 20, 3);
-		wm.insertLogo(inputImage, logoImage);
-        std::cout << "The End!!!" << std::endl;
+//		  SWatermark wm(4, 4, 20, 3);
+//		  wm.embedLogo(inputImage, logoImage);
+//        std::cout << "The End!!!" << std::endl;
 
 //		  BMPData inputRGB("images/lena_rgb.bmp");
 //		  inputRGB.init();
@@ -234,10 +240,50 @@ int main(int argc, char *argv[]) {
 //        Utilities::toGrayScale(outputRGB_2, Utilities::GRAY_LIGHTNESS);
 //        outputRGB_2.create("images/test_2.bmp");
 //
-//        BMPData outputRGB_3(inputRGB);
+//        BMPData outputRGB_3(****BCR***inputRGB);
 //        Utilities::toGrayScale(outputRGB_3, Utilities::GRAY_LUMINOSITY);
 //        outputRGB_3.create("images/test_3.bmp");
 
+
+        SProcess::WMProcess_17 wm_17(20);
+        wm_17.embedLogo(hostImage, logoImage);
+        wm_17.extractLogo(logoOutImage, hostImage);
+//
+//        SProcess::WMProcess_35 wm_35(20);
+//        wm_35.embedLogo(hostImage, logoImage);
+//        wm_35.extractLogo(logoOutImage, hostImage);
+//
+//        SProcess::WMProcess_74 wm_74(10., 8);
+//        wm_74.embedLogo(hostImage, logoImage);
+//        wm_74.extractLogo(logoOutImage, hostImage);
+//
+//        UProcess::WMProcess_43 wm_43(1, BLOCK_DIMENSION_DEFAULT_43, 1, 3);
+//        UProcess::WMProcess_43 wm_43(1);
+//        wm_43.embedLogo(hostImage, logoImage);
+//        wm_43.extractLogo(logoOutImage, hostImage);
+//
+//        UProcess::WMProcess_09 wm_09(.002);
+//        wm_09.embedLogo(hostImage, logoImage);
+//        wm_09.extractLogo(hostImage, logoImage);
+//
+//        UVProcess::WMProcess_18 wm_18(.002);
+//        wm_18.embedLogo(hostImage, logoImage);
+//        wm_18.extractLogo(logoOutImage, hostImage);
+
+//		Eigen::MatrixXd test(4,4);
+//		test << 43, 43, 54, 51,
+//		        43, 43, 54, 51,
+//		        42, 42, 49, 46,
+//		        46, 46, 49, 49;
+//		Utilities::getSVD(test);
+
+//        std::cout << "Ouput File: Data" << std::endl;
+//        std::cout << hostImage << std::endl;
+
+//        std::cout << "PSNR : " << Utilities::PSNR_RGB(inputImage, hostImage) << std::endl;
+        std::cout << "BCR: " << Utilities::BCR(logoImage, logoOutImage) << std::endl;
+        logoOutImage.create(std::string("output/images/logoOutput.bmp"));
+        std::cout << "The End!!!" << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << "Error. " << e.what() << std::endl;
 	} catch (...) {

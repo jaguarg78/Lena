@@ -8,25 +8,66 @@
 #include "BMPData.h"
 
 BMPData::BMPData(const std::string& sFileName) : IImageData(sFileName),
-                                                 _type(TYPE_INVALID),
-                                                 _pColorMapData(NULL) {
+                                                 _pColorMapData(NULL),
+                                                 _type(TYPE_INVALID) {
 	std::memset(&_stFileHeader, 0, sizeof(BitMapFileHeader));
 	std::memset(&_stInfoHeader, 0, sizeof(BitMapInfoHeader));
+}
+
+BMPData::BMPData(const IImageData& rSource) : IImageData(rSource),
+                                              _pColorMapData(NULL),
+                                              _type(TYPE_INVALID) {
+
 }
 
 BMPData::BMPData(const std::vector<unsigned char>& data,
                  int iWidth,
                  int iHeight,
-                 Type type,
-                 const std::vector<PixelTable> *pColorMap) : IImageData(data, iWidth, iHeight),
-                                                             _type(type),
-                                                             _pColorMapData(NULL) {
+                 const std::vector<PixelTable> *pColorMap,
+                 Type type) : IImageData(data, iWidth, iHeight),
+                              _pColorMapData(NULL),
+                              _type(type) {
+
+    initStructuresData(pColorMap);
+}
+
+BMPData::BMPData(int iWidth,
+                 int iHeight,
+                 const std::vector<PixelTable> *pColorMap,
+                 Type type) : IImageData(iWidth, iHeight),
+                              _pColorMapData(NULL),
+                              _type(type) {
+
+    /*
+     * Warning!!! Data size must be set in this point because of in order to
+     * calculate the RowSizeFixed specific calculations of this
+     * class is needed.
+     */
+    _uiDataSize = getRowSizeFixed() * _iHeight;
+    _pcData = new unsigned char[_uiDataSize];
+    std::memset(_pcData, 0, _uiDataSize);
+
+    initStructuresData(pColorMap);
+
+    // DEBUG
+    std::cout << "New Data Size: " << _uiDataSize << std::endl;
+}
+
+BMPData::~BMPData() throw() {
+    if (_pColorMapData && !_isOutputFile) {
+        delete _pColorMapData;
+        _pColorMapData = NULL;
+    }
+}
+
+void BMPData::initStructuresData(const std::vector<PixelTable> *pColorMap) {
     if (pColorMap) {
         _pColorMapData = const_cast<std::vector<PixelTable> *>(pColorMap);
     } else if (_type == TYPE_BINARY) {
         initBinaryColorMap();
     }
 
+    // DEBUG
 //    if (pColorMap) {
 //        _pColorMapData = pColorMap; //new std::vector<PixelTable>(*pColorMap);
 //        std::cout << " ********** Color 1 *******" << std::endl;
@@ -71,20 +112,8 @@ BMPData::BMPData(const std::vector<unsigned char>& data,
     _stFileHeader.bfSize = _stFileHeader.bfOffBits + _stInfoHeader.biSizeImage;
 }
 
-BMPData::BMPData(const IImageData& rSource) : IImageData(rSource),
-                                              _type(TYPE_INVALID),
-                                              _pColorMapData(NULL) {
-
-}
-
-BMPData::~BMPData() throw() {
-    if (_pColorMapData && !_isOutputFile) {
-        delete _pColorMapData;
-        _pColorMapData = NULL;
-    }
-}
-
 unsigned short BMPData::getBitCount() const {
+    // DEBUG
 //    std::cout << "getBitCount" << std::endl;
 //    std::cout << _type << std::endl;
     switch (_type) {
@@ -147,6 +176,7 @@ void BMPData::insertFileData() {
     }
     _ofImageFile.write((char *) _pcData, _stInfoHeader.biSizeImage);
 
+    // DEBUG
 //    std::cout << "****************** Test *******************" << std::endl;
 //    for (unsigned int  i = 0; i < _stInfoHeader.biSizeImage; i++) {
 //        if ((i * 8) % _iWidth == 0) {
@@ -255,9 +285,9 @@ void BMPData::getHeaderDataStream(std::ostream& os) {
     if (_pColorMapData) {
         os << "*** Color Map *** " << std::endl;
         for (unsigned int i = 0; i < _pColorMapData->size(); i++) {
-            os << "[" << std::hex << (int) (*_pColorMapData)[i].pixel.byteRed << " "
-                                  << (int) (*_pColorMapData)[i].pixel.byteBlue << " "
-                                  << (int) (*_pColorMapData)[i].pixel.byteGreen << "]" << std::dec << std::endl;
+            os << "[" << std::hex << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteRed << " "
+                                  << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteBlue << " "
+                                  << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteGreen << "]" << std::dec << std::endl;
 
         }
     }
