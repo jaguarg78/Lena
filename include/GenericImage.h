@@ -12,7 +12,7 @@
 #include <climits>
 #include <vector>
 
-#include <qt5/QtGui/QImage>
+#include <QtGui/QImage>
 
 #include "IImageData.h"
 #include "definitions/Global.h"

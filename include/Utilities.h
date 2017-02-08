@@ -23,11 +23,11 @@ extern "C" {
                         int*    piColumns,  // Number of Matrix' Columns (n)
                         double* pdMatrixA,  // m x n Matrix A as an array
                         int*    piLeadA,    // Leading Dimension of A (m)
-                        double* pdMatrixS,  // m x n Matrix S as an array
-                        double* pdMatrixV,  // m x n Matrix Vt as an array
-                        int*    piLeadV,    // Leading Dimension of V (n)
+                        double* pdMatrixS,  // m Vector S
                         double* pdMatrixU,  // m x n Matrix U as an array
-                        int*    piLeadU,    // Leading Dimension of U (m)
+                        int*    piLeadV,    // Leading Dimension of U (n)
+                        double* pdMatrixV,  // m x n Matrix Vt as an array
+                        int*    piLeadU,    // Leading Dimension of V (m)
                         double* pdWork,     // Workspace as an array
                         int*    piLeadWS,   // LD of Workspace >= max(3*min(m,n)+max(m,n), 5*min(m,n)).
                                             // -1 calculates optimal Workspace size.
@@ -48,7 +48,7 @@ namespace Utilities {
     struct SVD {
         Eigen::MatrixXd  matU;
         Eigen::MatrixXd  matS;
-        Eigen::MatrixXd  matVT;
+        Eigen::MatrixXd  matV;
     };
 
     double MSE_RGB(const IImageData& rBMPRawImage,

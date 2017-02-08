@@ -94,7 +94,7 @@ void IImageData::init() {
                 parseFileData();
             }
         } catch (std::ifstream::failure& e) {
-            throw ImageException::BaseException();
+            throw GenericException::BaseException(std::string(e.what()) + ". File not found. " + _sFileName);
         }
 
         _ifImageFile.close();
@@ -135,7 +135,7 @@ void IImageData::create(bool bInvert) {
                 insertFileData();
             }
         } catch (std::ofstream::failure& e) {
-            throw ImageException::BaseException();
+        	throw GenericException::BaseException(std::string(e.what()) + ". Error Creating " + _sFileName);
         }
 
         _ofImageFile.close();

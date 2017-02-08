@@ -213,32 +213,36 @@ namespace Utilities {
 
     SVD getSVD(Eigen::MatrixXd matA) {
 
-        int iRows = matA.rows();
-        int iCols = matA.cols();
+        int iSize = matA.rows();
         int iLeadWS = -1;
         int iInfo;
         double dOptWS;
-        Eigen::Matrix<double, 4, 4, Eigen::RowMajor> matALeadRow = matA;
-        double *pdMatrixA = matALeadRow.data();
+        Eigen::MatrixXd mATemp = matA;
+#ifdef _DEBUG
+        std::cout << "Matrix A" << std::endl;
+		std::cout << matA << std::endl;
+		std::cout << "Matrix A copy" << std::endl;
+		std::cout << mATemp << std::endl;
+#endif
+		SVD svd;
+		svd.matU.resize(iSize, iSize);
+		svd.matS.resize(iSize, iSize);
+		svd.matV.resize(iSize, iSize);
 
-//        Eigen::Map<Eigen::MatrixXd>(pdMatrixA, iRows, iCols) = matA;
-
-        double pdMatrixU[iRows * iCols];
-        double pdMatrixS[iRows * iCols];
-        double pdMatrixV[iRows * iCols];
-
+		Eigen::VectorXd vSTemp(iSize);
+		Eigen::MatrixXd mVTemp(iSize, iSize);
         /* Getting Optimal Workspace size */
         ::dgesvd_(const_cast<char *>(std::string("All").c_str()),
                   const_cast<char *>(std::string("All").c_str()),
-                  &iRows,
-                  &iCols,
-                  pdMatrixA,
-                  &iRows,
-                  pdMatrixS,
-                  pdMatrixV,
-                  &iCols,
-                  pdMatrixU,
-                  &iRows,
+                  &iSize,
+                  &iSize,
+                  mATemp.data(),
+                  &iSize,
+                  vSTemp.data(),
+                  svd.matU.data(),
+                  &iSize,
+                  mVTemp.data(),
+                  &iSize,
                   &dOptWS,
                   &iLeadWS,
                   &iInfo);
@@ -247,44 +251,30 @@ namespace Utilities {
         double *pdWS = new double[iLeadWS * sizeof(double)];
         ::dgesvd_(const_cast<char *>(std::string("All").c_str()),
                   const_cast<char *>(std::string("All").c_str()),
-                  &iRows,
-                  &iCols,
-                  pdMatrixA,
-                  &iRows,
-                  pdMatrixS,
-                  pdMatrixV,
-                  &iCols,
-                  pdMatrixU,
-                  &iRows,
+                  &iSize,
+                  &iSize,
+                  mATemp.data(),
+                  &iSize,
+                  vSTemp.data(),
+                  svd.matU.data(),
+                  &iSize,
+                  mVTemp.data(),
+                  &iSize,
                   pdWS,
                   &iLeadWS,
                   &iInfo);
-
+        svd.matV = mVTemp.transpose();
+        svd.matS = vSTemp.asDiagonal();
+#if _DEBUG
         std::cout << "Matrix U" << std::endl;
-        for (int iRow = 0; iRow < iRows; iRow++) {
-            for (int iCol = 0; iCol < iCols; iCol++) {
-                std::cout << std::setprecision(6) << std::setw(15) << pdMatrixU[(iRow * iRows) + iCol];
-            }
-            std::cout << std::endl;
-        }
-        std::cout << std::endl;
-        std::cout << "Vector S" << std::endl;
-        for (int iDiag = 0; iDiag < iRows; iDiag++) {
-            std::cout << std::setprecision(6) << std::setw(15) << pdMatrixS[iDiag];
-        }
-        std::cout << std::endl << std::endl;
-        std::cout << "Matrix V" << std::endl;
-        for (int iRow = 0; iRow < iRows; iRow++) {
-            for (int iCol = 0; iCol < iCols; iCol++) {
-                std::cout << std::setprecision(6) << std::setw(15) << pdMatrixV[(iRow * iRows) + iCol];
-            }
-            std::cout << std::endl;
-        }
-        std::cout << std::endl;
-
-        SVD svd;
-
-//        delete[] pdWS;
+		std::cout << svd.matU << std::endl;
+		std::cout << "Vector S" << std::endl;
+		std::cout << svd.matS << std::endl;
+		std::cout << "Matrix V" << std::endl;
+		std::cout << svd.matV << std::endl;
+		std::cout << "Matrix A Result" << std::endl;
+		std::cout << svd.matU * svd.matS * svd.matV.transpose() << std::endl;
+#endif
         return svd;
     }
 

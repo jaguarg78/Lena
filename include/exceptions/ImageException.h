@@ -8,29 +8,16 @@
 #ifndef INCLUDE_EXCEPTIONS_IMAGEEXCEPTION_H_
 #define INCLUDE_EXCEPTIONS_IMAGEEXCEPTION_H_
 
-#include <exception>
+#include "GenericException.h"
 
 namespace ImageException {
-	class BaseException : public std::exception {
-	public:
-		BaseException() : _sMessage("General Error") { }
-		BaseException(const std::string& sMessage) : _sMessage(sMessage) { }
-		virtual ~BaseException() throw() { }
-
-		virtual const char *what() const throw() {
-			return _sMessage.c_str();
-		}
-	private:
-		std::string		_sMessage;
-	};
-
-	class FileSizeException : public BaseException {
+	class FileSizeException : public GenericException::BaseException {
 	public:
 		FileSizeException() : BaseException("File size does not match") { }
 		virtual ~FileSizeException() throw() { }
 	};
 
-	class NotSuppertedDepthException : public BaseException {
+	class NotSuppertedDepthException : public GenericException::BaseException {
 	public:
 		NotSuppertedDepthException() : BaseException("Not supported Depth") { }
 		virtual ~NotSuppertedDepthException() throw() { }

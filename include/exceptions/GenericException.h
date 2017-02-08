@@ -29,6 +29,13 @@ namespace GenericException {
 		MissingParameter() : BaseException("Missing necessary parameters") { }
 		virtual ~MissingParameter() throw() { }
 	};
+
+	class LeavingApplicationByParam : public BaseException {
+	public:
+		LeavingApplicationByParam(const std::string& sMessage) : BaseException(sMessage) { }
+		virtual ~LeavingApplicationByParam() throw() { }
+	};
+
 }
 
 #endif /* GENERICEXCEPTION_H_ */

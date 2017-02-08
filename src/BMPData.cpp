@@ -140,7 +140,10 @@ void BMPData::parseFileData() {
 	_ifImageFile.seekg(sizeof(BitMapFileHeader), std::ios::beg);
 	_ifImageFile.read((char *) &_stInfoHeader, sizeof(BitMapInfoHeader));
 
+#if 0
 	std::cout << "*********" << _stInfoHeader.biBitCount << std::endl;
+#endif
+
 	// Verify image bit count
 	switch (_stInfoHeader.biBitCount) {
 	case BIT_COUNT_BINARY_IMAGE:
