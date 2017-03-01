@@ -1,0 +1,955 @@
+20170301012833 [INFO  ] - Starting Lena....
+20170301012833 [INFO  ] - *********************************
+File Name  :images/lena_GS.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301012842 [INFO  ] - Starting Lena....
+20170301012842 [INFO  ] - *********************************
+File Name  :images/lena_GS.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301014117 [INFO  ] - Starting Lena....
+20170301014117 [DEBUG ] - *********************************
+File Name  :images/lena_GS.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301014117 [DEBUG ] - *********************************
+File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2925
+YPelsPerMet: 2925
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301014117 [DEBUG ] - *********************************
+File Name  :images/lena_GS.out.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301014117 [DEBUG ] - *********************************
+File Name  :
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2835
+YPelsPerMet: 2835
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301014117 [INFO  ] - Leaving Lena....
+20170301014328 [INFO  ] - Starting Lena....
+20170301014328 [DEBUG ] - *********************************
+File Name  :images/lena_GS.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301014328 [DEBUG ] - *********************************
+File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2925
+YPelsPerMet: 2925
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301014328 [DEBUG ] - *********************************
+File Name  :images/lena_GS.out.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301014328 [DEBUG ] - *********************************
+File Name  :
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2835
+YPelsPerMet: 2835
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301014328 [INFO  ] - Leaving Lena....
+20170301014328 [ERROR ] - Error. Not treated exception
+20170301014837 [INFO  ] - Starting Lena....
+20170301014837 [DEBUG ] - *********************************
+File Name  :images/lena_GS.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301014837 [DEBUG ] - *********************************
+File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2925
+YPelsPerMet: 2925
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301014837 [DEBUG ] - *********************************
+File Name  :images/lena_GS.out.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301014837 [DEBUG ] - *********************************
+File Name  :
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2835
+YPelsPerMet: 2835
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301014837 [INFO  ] - Leaving Lena....
+20170301014837 [ERROR ] - Error. Not treated exception
+20170301015136 [INFO  ] - ***************** Starting Lena *****************
+20170301015136 [DEBUG ] - *********************************
+File Name  :images/lena_GS.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301015136 [DEBUG ] - *********************************
+File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2925
+YPelsPerMet: 2925
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301015136 [DEBUG ] - *********************************
+File Name  :images/lena_GS.out.bmp
+*** File Header ***
+Magic Id   : BM
+File Size  : 786486
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 54
+*** Info Header ***
+Info Size  : 40
+Img Width  : 512
+Img Height : 512
+Planes     : 1
+BitCount   : 24
+Compression: 0
+Image Size : 786432
+XPelsPerMet: 0
+YPelsPerMet: 0
+Used Color : 0
+Imp Color  : 0
+
+20170301015136 [DEBUG ] - *********************************
+File Name  :
+*** File Header ***
+Magic Id   : BM
+File Size  : 190
+Reserved1  : 0
+Reserved2  : 0
+Offset     : 62
+*** Info Header ***
+Info Size  : 40
+Img Width  : 32
+Img Height : 32
+Planes     : 1
+BitCount   : 1
+Compression: 0
+Image Size : 128
+XPelsPerMet: 2835
+YPelsPerMet: 2835
+Used Color : 2
+Imp Color  : 2
+*** Color Map *** 
+[  0   0   0]
+[ ff  ff  ff]
+
+20170301015136 [INFO  ] - ***************** Leaving Lena *****************
+20170301015403 [INFO  ] - ***************** Starting Lena *****************
+20170301015403 [DEBUG ] - *********************************
+File Name  :images/lena_GS.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301015403 [DEBUG ] - *********************************
+File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2925
+	YPelsPerMet: 2925
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301015403 [DEBUG ] - *********************************
+File Name  :images/lena_GS.out.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301015403 [DEBUG ] - *********************************
+File Name  :
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2835
+	YPelsPerMet: 2835
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301015403 [INFO  ] - ***************** Leaving Lena *****************
+20170301015819 [INFO  ] - ***************** Starting Lena *****************
+20170301015819 [DEBUG ] - 
+File Name  :images/lena_GS.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301015819 [DEBUG ] - 
+File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2925
+	YPelsPerMet: 2925
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301015819 [DEBUG ] - 
+File Name  :images/lena_GS.out.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301015819 [DEBUG ] - 
+File Name  :
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2835
+	YPelsPerMet: 2835
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301015819 [INFO  ] - ***************** Leaving Lena *****************
+20170301020020 [INFO  ] - ***************** Starting Lena *****************
+20170301020020 [DEBUG ] - File Name  :images/lena_GS.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301020020 [DEBUG ] - File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2925
+	YPelsPerMet: 2925
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301020020 [DEBUG ] - File Name  :images/lena_GS.out.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301020020 [DEBUG ] - File Name  :
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2835
+	YPelsPerMet: 2835
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301020020 [INFO  ] - ***************** Leaving Lena *****************
+20170301020854 [NOTICE] - ***************** Starting Lena *****************
+20170301020854 [NOTICE] - ***************** Leaving Lena *****************
+20170301022012 [NOTICE] - ***************** Starting Lena *****************
+20170301022012 [NOTICE] - ***************** Leaving Lena *****************
+20170301023202 [NOTICE] - ***************** Starting Lena *****************
+20170301023202 [NOTICE] - ***************** Leaving Lena *****************
+20170301023341 [NOTICE] - ***************** Starting Lena *****************
+20170301023341 [INFO  ] - Init input_file images/lena_GS.bmp
+20170301023341 [DEBUG ] - File Name  :images/lena_GS.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301023341 [INFO  ] - Init input_file images/Test_32x32_BI.bmp
+20170301023341 [DEBUG ] - File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2925
+	YPelsPerMet: 2925
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301023341 [DEBUG ] - File Name  :images/lena_GS.out.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+
+20170301023341 [DEBUG ] - New Data Size: 128
+20170301023341 [DEBUG ] - File Name  :
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2835
+	YPelsPerMet: 2835
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+
+20170301023341 [NOTICE] - ***************** Leaving Lena *****************
+20170301023658 [NOTICE] - ***************** Starting Lena *****************
+20170301023658 [INFO  ] - Init input_file images/lena_GS.bmp
+20170301023658 [DEBUG ] - File Name  :images/lena_GS.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+20170301023658 [INFO  ] - Init input_file images/Test_32x32_BI.bmp
+20170301023658 [DEBUG ] - File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2925
+	YPelsPerMet: 2925
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]	[ ff  ff  ff]
+20170301023658 [DEBUG ] - File Name  :images/lena_GS.out.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+20170301023658 [DEBUG ] - New Data Size: 128
+20170301023658 [DEBUG ] - File Name  :
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2835
+	YPelsPerMet: 2835
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]	[ ff  ff  ff]
+20170301023658 [NOTICE] - ***************** Leaving Lena *****************
+20170301023939 [NOTICE] - ***************** Starting Lena *****************
+20170301023939 [INFO  ] - Init input_file images/lena_GS.bmp
+20170301023939 [DEBUG ] - File Name  :images/lena_GS.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+20170301023939 [INFO  ] - Init input_file images/Test_32x32_BI.bmp
+20170301023939 [DEBUG ] - File Name  :images/Test_32x32_BI.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2925
+	YPelsPerMet: 2925
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+20170301023939 [DEBUG ] - File Name  :images/lena_GS.out.bmp
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 786486
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 54
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 512
+	Img Height : 512
+	Planes     : 1
+	BitCount   : 24
+	Compression: 0
+	Image Size : 786432
+	XPelsPerMet: 0
+	YPelsPerMet: 0
+	Used Color : 0
+	Imp Color  : 0
+20170301023939 [DEBUG ] - New Data Size: 128
+20170301023939 [DEBUG ] - File Name  :
+*** File Header ***
+	Magic Id   : BM
+	File Size  : 190
+	Reserved1  : 0
+	Reserved2  : 0
+	Offset     : 62
+*** Info Header ***
+	Info Size  : 40
+	Img Width  : 32
+	Img Height : 32
+	Planes     : 1
+	BitCount   : 1
+	Compression: 0
+	Image Size : 128
+	XPelsPerMet: 2835
+	YPelsPerMet: 2835
+	Used Color : 2
+	Imp Color  : 2
+*** Color Map *** 
+	[  0   0   0]
+	[ ff  ff  ff]
+20170301023939 [NOTICE] - ***************** Leaving Lena *****************

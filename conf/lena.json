@@ -1,0 +1,27 @@
+{
+    "version": "0.0.1",
+    "logging": {
+        "conf": "",
+    },
+    "process": [
+        {
+            "name": "17_1",
+            "default": {
+                "redundancy": 1,
+                "iterations": 1,
+                "block"{
+                    "size": 4,
+                    "bitsPerBlock": 1
+                }
+            }
+        }
+    ],
+    "images": {
+        "input": {
+
+        },
+        "output": {
+
+        }
+    }
+}
