@@ -15,7 +15,6 @@
 #include <QtGui/QImage>
 
 #include "IImageData.h"
-#include "definitions/Global.h"
 
 class GenericImage : public IImageData {
 public:

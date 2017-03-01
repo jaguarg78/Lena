@@ -6,6 +6,7 @@
  */
 
 #include "Watermark.h"
+#include "Utilities.h"
 
 Watermark::Watermark(unsigned int uiDimension,
                      unsigned int uiRedundancy,

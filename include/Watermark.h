@@ -10,8 +10,6 @@
 
 #include "IImageData.h"
 
-#include "definitions/Global.h"
-
 class Watermark {
 public:
     enum Type_Coordinates {

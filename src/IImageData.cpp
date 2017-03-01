@@ -77,7 +77,7 @@ IImageData::~IImageData() throw() {
 }
 
 void IImageData::init() {
-    std::cout << "Init input_file" << std::endl;
+    GLogger::log(GLogger::INFO, "Init input_file " + _sFileName);
 
     if (!_isOutputFile) {
         _ifImageFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);

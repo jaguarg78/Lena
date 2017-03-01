@@ -9,11 +9,12 @@
 #define INCLUDE_GLOBAL_H_
 
 #include <iostream>
+#include <iomanip>
 #include <climits>
 
 #include <eigen3/Eigen/Dense>
 
-#include "Utilities.h"
+#include "external/GLogger.h"
 
 enum WMProcess_Types {
 	TYPE_I,
@@ -64,5 +65,22 @@ typedef struct {
 #define DATA_SIZE_PER_BLOCK_18       2
 
 #define PADDING_ADJUSTMENT_BYTES     4
+
+namespace Utilities {
+	/* Debug functions */
+	namespace Debug {
+		const std::string getValuesFromVector(const std::vector<unsigned char>& vecInput,
+											  unsigned int uiOffset,
+											  unsigned int uiWidth);
+
+		template<typename T>
+		const std::string getString(T& t) {
+			std::ostringstream oss;
+			oss << t;
+
+			return oss.str();
+		}
+	}
+}
 
 #endif /* INCLUDE_GLOBAL_H_ */

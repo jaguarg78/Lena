@@ -16,6 +16,8 @@
 #include "Utilities.h"
 #include "WMProcess.h"
 
+#include "external/GLogger.h"
+
 #include "exceptions/GenericException.h"
 
 #define SHOWN_PIXELS    12
@@ -83,17 +85,19 @@ std::string getUsageStr() {
 		<< "\t\e[1m" << getValue<std::string>("appName") << "\e[0m\t" << VERSION << std::endl << std::endl
 	    << "\e[1mREQUIRED\e[0m" << std::endl
 	    << std::setw(10) << "\e[1m-i" << " --input\e[0m <file path>" << std::endl
-	    << std::setw(10) << std::setfill(' ') << " " << "Input host file .bmp." << std::endl
-	    << std::setw(10) << "\e[1m-w" << " --watermarked-image\e[0m <file path>" << std::endl
-	    << std::setw(10) << std::setfill(' ') << " " << "Output watermarked image .bmp." << std::endl << std::endl
-	    << "\e[1mOPTIONAL\e[0m" << std::endl
+	    << std::setw(10) << std::setfill(' ') << " " << "Input host file .bmp." << std::endl << std::endl
 	    << std::setw(10) << "\e[1m-l" << " --logo-image\e[0m <file path>" << std::endl
-	    << std::setw(10) << std::setfill(' ') << " " << "Input binary logo file .bmp." << std::endl
+	    << std::setw(10) << std::setfill(' ') << " " << "Input binary logo file .bmp." << std::endl << std::endl
+	    << std::setw(10) << "\e[1m-g" << " --log-config\e[0m <file path>" << std::endl
+		<< std::setw(10) << std::setfill(' ') << " " << "Logging configuration file" << std::endl << std::endl
+	    << "\e[1mOPTIONAL\e[0m" << std::endl
+	    << std::setw(10) << "\e[1m-w" << " --watermarked-image\e[0m <file path>" << std::endl
+		<< std::setw(10) << std::setfill(' ') << " " << "Output watermarked image .bmp." << std::endl << std::endl
 	    << std::setw(10) << "\e[1m-o" << " --logo-output\e[0m <file path>" << std::endl
 	    << std::setw(10) << std::setfill(' ') << " " << "Output binary logo file .bmp." << std::endl << std::endl
 	    << "\e[1mINFO\e[0m" << std::endl
 	    << std::setw(10) << "\e[1m-v" << " --version\e[0m" << std::endl
-	    << std::setw(10) << std::setfill(' ') << " " << "Version." << std::endl
+	    << std::setw(10) << std::setfill(' ') << " " << "Version." << std::endl << std::endl
 	    << std::setw(10) << "\e[1m-h" << " --help\e[0m" << std::endl
 	    << std::setw(10) << std::setfill(' ') << " " << "Help" << std::endl;
 
@@ -116,6 +120,7 @@ void params(int argc, char *argv[]) {
 			{"watermarked-image", required_argument, 0, 'w'},
 			{"logo-image", required_argument, 0, 'l'},
 			{"logo-output", required_argument, 0, 'o'},
+			{"log-config", required_argument, 0, 'g'},
 			{"version", no_argument, 0, 'v'},
 			{"help", no_argument, 0, 'h'},
 			{0, 0, 0, 0}
@@ -125,7 +130,7 @@ void params(int argc, char *argv[]) {
 	int opt = 0;
 	while ((opt = getopt_long(argc,
 							  argv,
-							  "i:w:l:o:vh",
+							  "i:w:l:o:g:vh",
 							  options,
 							  &iArgIndex)) != -1) {
 		switch (opt) {
@@ -145,6 +150,10 @@ void params(int argc, char *argv[]) {
 			setParam("logoOutput", optarg);
 
 			break;
+		case 'g':
+			setParam("logConf", optarg);
+
+			break;
 		case 'v':
 			throw GenericException::LeavingApplicationByParam(getVersionStr());
 		case 'h':
@@ -161,11 +170,13 @@ void params(int argc, char *argv[]) {
 			  << "Water: " << getValue<std::string>("watermarkedImage") << std::endl
 			  << "LogIn: " << getValue<std::string>("logoImage") << std::endl
 			  << "LogOu: " << getValue<std::string>("logoOutput") << std::endl
+			  << "LogCo: " << getValue<std::string>("logConf") << std::endl
 			  << "Ver  : " << getValue<std::string>("version") << std::endl
 			  << "Help : " << getValue<std::string>("help") << std::endl;
 #endif
 	if (!paramExistsAndNotEmpty("input") ||
-		!paramExistsAndNotEmpty("logoImage")) {
+		!paramExistsAndNotEmpty("logoImage") ||
+		!paramExistsAndNotEmpty("logConf")) {
 
 		throw GenericException::MissingParameter();
 	}
@@ -175,21 +186,22 @@ int main(int argc, char *argv[]) {
 	try {
 		params(argc, argv);
 
-		std::cout << "Starting Lena....." << std::endl;
+		GLogger::getInstance()->init(getValue<std::string>("logConf"));
+		GLogger::log(GLogger::NOTICE, "***************** Starting Lena *****************");
 
 		BMPData inputImage(getValue<std::string>("input"));
 		inputImage.init();
-		std::cout << inputImage << std::endl;
+		GLogger::log(GLogger::DEBUG, Utilities::getObjectString<BMPData>(inputImage));
 
 		BMPData logoImage(getValue<std::string>("logoImage"));
 		logoImage.init();
-		std::cout << logoImage << std::endl;
+		GLogger::log(GLogger::DEBUG, Utilities::getObjectString<BMPData>(logoImage));
 
 		BMPData hostImage(inputImage);
-		std::cout << hostImage << std::endl;
+		GLogger::log(GLogger::DEBUG, Utilities::getObjectString<BMPData>(hostImage));
 
         BMPData logoOutImage(32, 32);
-        std::cout << logoOutImage << std::endl;
+        GLogger::log(GLogger::DEBUG, Utilities::getObjectString<BMPData>(logoOutImage));
 
         SVDTest();
 #if 0
@@ -200,30 +212,29 @@ int main(int argc, char *argv[]) {
 		std::cout << "BCR: " << Utilities::BCR(logoImage, logoOutImage) << std::endl;
 		logoOutImage.create(getValue<std::string>("logoOutput"));
 #endif
-		std::cout << "The End!!!" << std::endl;
+
+		GLogger::log(GLogger::NOTICE, "***************** Leaving Lena *****************");
+
+		return 0;
 	} catch (GenericException::LeavingApplicationByParam &e) {
 		std::cout << e.what() << std::endl;
+		GLogger::log(GLogger::ERROR, std::string(e.what()));
 	} catch (GenericException::MissingParameter &e) {
 		std::cerr << "Error. " << e.what() << std::endl;
+		GLogger::log(GLogger::ERROR, std::string("Error. " + std::string(e.what())));
 		std::cout << getUsageStr() << std::endl;
-
-		return 1;
 	} catch (std::runtime_error & e) {
 		std::cerr << "Error. " << e.what() << std::endl;
-
-		return 1;
+		GLogger::log(GLogger::ERROR, std::string("Error. " + std::string(e.what())));
 	} catch (std::exception &e) {
 		std::cerr << "Error. " << e.what() << std::endl;
-
-		return 1;
+		GLogger::log(GLogger::ERROR, "Error. Not treated exception");
 	}  catch (...) {
 		std::cerr << "Error. Not treated exception" << std::endl;
-
-		return 1;
 	}
 
 
-	return 0;
+	return 1;
 }
 
 #if 0

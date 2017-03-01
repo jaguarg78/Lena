@@ -50,7 +50,7 @@ BMPData::BMPData(int iWidth,
     initStructuresData(pColorMap);
 
     // DEBUG
-    std::cout << "New Data Size: " << _uiDataSize << std::endl;
+    GLogger::log(GLogger::DEBUG, "New Data Size: " + Utilities::Debug::getString(_uiDataSize));
 }
 
 BMPData::~BMPData() throw() {
@@ -264,34 +264,36 @@ unsigned int BMPData::getInputDataSize() const {
 
 void BMPData::getHeaderDataStream(std::ostream& os) {
     os << "*** File Header ***" << std::endl
-       << "Magic Id   : "
+       << "\tMagic Id   : "
            << (char) (_stFileHeader.bfType & 0x00FF)
            << (char) ((_stFileHeader.bfType & 0xFF00) >> 8) << std::endl
-       << "File Size  : " << _stFileHeader.bfSize << std::endl
-       << "Reserved1  : " << _stFileHeader.bfReserved1 << std::endl
-       << "Reserved2  : " << _stFileHeader.bfReserved2 << std::endl
-       << "Offset     : " << _stFileHeader.bfOffBits << std::endl;
+       << "\tFile Size  : " << _stFileHeader.bfSize << std::endl
+       << "\tReserved1  : " << _stFileHeader.bfReserved1 << std::endl
+       << "\tReserved2  : " << _stFileHeader.bfReserved2 << std::endl
+       << "\tOffset     : " << _stFileHeader.bfOffBits << std::endl;
 
     os << "*** Info Header ***" << std::endl
-       << "Info Size  : " << _stInfoHeader.biSize << std::endl
-       << "Img Width  : " << _stInfoHeader.Width << std::endl
-       << "Img Height : " << _stInfoHeader.Height << std::endl
-       << "Planes     : " << _stInfoHeader.biPlanes << std::endl
-       << "BitCount   : " << _stInfoHeader.biBitCount << std::endl
-       << "Compression: " << _stInfoHeader.biCompresssion << std::endl
-       << "Image Size : " << _stInfoHeader.biSizeImage << std::endl
-       << "XPelsPerMet: " << _stInfoHeader.biXPelsPerMeter << std::endl
-       << "YPelsPerMet: " << _stInfoHeader.biYPelsPerMeter << std::endl
-       << "Used Color : " << _stInfoHeader.biClrUsed << std::endl
-       << "Imp Color  : " << _stInfoHeader.biClrImportant << std::endl;
+       << "\tInfo Size  : " << _stInfoHeader.biSize << std::endl
+       << "\tImg Width  : " << _stInfoHeader.Width << std::endl
+       << "\tImg Height : " << _stInfoHeader.Height << std::endl
+       << "\tPlanes     : " << _stInfoHeader.biPlanes << std::endl
+       << "\tBitCount   : " << _stInfoHeader.biBitCount << std::endl
+       << "\tCompression: " << _stInfoHeader.biCompresssion << std::endl
+       << "\tImage Size : " << _stInfoHeader.biSizeImage << std::endl
+       << "\tXPelsPerMet: " << _stInfoHeader.biXPelsPerMeter << std::endl
+       << "\tYPelsPerMet: " << _stInfoHeader.biYPelsPerMeter << std::endl
+       << "\tUsed Color : " << _stInfoHeader.biClrUsed << std::endl
+       << "\tImp Color  : " << _stInfoHeader.biClrImportant;
 
     if (_pColorMapData) {
-        os << "*** Color Map *** " << std::endl;
+        os << "\n*** Color Map *** " << std::endl;
         for (unsigned int i = 0; i < _pColorMapData->size(); i++) {
-            os << "[" << std::hex << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteRed << " "
+            os << "\t[" << std::hex << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteRed << " "
                                   << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteBlue << " "
-                                  << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteGreen << "]" << std::dec << std::endl;
-
+                                  << std::setw(3) << (int) (*_pColorMapData)[i].pixel.byteGreen << "]" << std::dec;
+            if (i < (_pColorMapData->size() - 1)) {
+            	os << std::endl;
+            }
         }
     }
 }

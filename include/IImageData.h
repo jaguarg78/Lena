@@ -13,6 +13,7 @@
 #include <cstring>
 #include <vector>
 
+#include "definitions/Global.h"
 #include "exceptions/ImageException.h"
 
 class IImageData {
@@ -39,7 +40,6 @@ public:
                         bool bInvert = false);
 
     friend std::ostream& operator<<(std::ostream& os, IImageData& data) {
-        os << "*********************************" << std::endl;
         os << "File Name  :" << data.getFileName() << std::endl;
         data.getHeaderDataStream(os);
         return os;

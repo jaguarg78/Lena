@@ -10,9 +10,7 @@
 
 #include <cmath>
 #include <ostream>
-#include <iomanip>
 
-#include "definitions/Global.h"
 #include "IImageData.h"
 
 extern "C" {
@@ -67,12 +65,13 @@ namespace Utilities {
     SVD getSVD(Eigen::MatrixXd matA);
     void normalizeValues(Eigen::MatrixXd& mBlock);
 
-    /* Debug functions */
-    namespace Debug {
-        const std::string getValuesFromVector(const std::vector<unsigned char>& vecInput,
-                                              unsigned int uiOffset,
-                                              unsigned int uiWidth);
-    }
+	template<class T>
+	std::string getObjectString(T& t) {
+		std::ostringstream oss;
+		oss << t;
+
+		return oss.str();
+	}
 };
 
 #endif /* SRC_UTILITIES_H_ */

@@ -11,7 +11,6 @@
 #include <cmath>
 
 #include "IImageData.h"
-
 #include "definitions/BMPFile.h"
 
 class BMPData: public IImageData {
