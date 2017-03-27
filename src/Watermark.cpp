@@ -12,11 +12,11 @@ Watermark::Watermark(unsigned int uiDimension,
                      unsigned int uiRedundancy,
                      unsigned int uiIterations,
                      unsigned int uiDataPerBlock,
-                     Type_Coordinates tyCoordinates) : _uiDimension(uiDimension),
-                                                       _uiDataPerBlock(uiDataPerBlock),
-                                                       _uiRedundancy(uiRedundancy),
-                                                       _uiIterations(uiIterations),
-                                                       _tyCoordinates(tyCoordinates) {
+                     Coordinates  tCoordinates) : _uiDimension(uiDimension),
+                                                  _uiDataPerBlock(uiDataPerBlock),
+                                                  _uiRedundancy(uiRedundancy),
+                                                  _uiIterations(uiIterations),
+                                                  _tCoordinates(tCoordinates) {
     double dLogDimensionBase2 = std::log(_uiDimension) / std::log(2);
     if (_uiDimension < BLOCK_DIMENSION_DEFAULT ||
         std::floor(dLogDimensionBase2) != dLogDimensionBase2) {
@@ -68,6 +68,9 @@ int Watermark::embedLogo(IImageData&       hostImage,
      * Structure to store information to be used at embedding process for each block
      */
     BlockData    stInsertionData;
+    stInsertionData.hasDebugInfo = true;
+    stInsertionData.pairDebugH = std::make_pair(0, 1);
+    stInsertionData.pairDebugV = std::make_pair(0, 1);
     /*
      * Variable used to stored data into the proper block
      */
@@ -451,9 +454,9 @@ void Watermark::embeddingProcess(IImageData&        hostImage,
     std::cout << mBlock << std::endl << std::endl;
 
     /* Calculate matrix decomposition to be embedded */
-    Eigen::JacobiSVD<Eigen::MatrixXd> svd(mBlock, Eigen::ComputeFullU | Eigen::ComputeFullV);
-    Eigen::MatrixXd mWMBlock = getWMedBlock(svd,
-                                            stBlockData.vecLogoDataBlock);
+    //Eigen::JacobiSVD<Eigen::MatrixXd> svd(mBlock, Eigen::ComputeFullU | Eigen::ComputeFullV);
+    Lena::SVD svd(mBlock);
+    Eigen::MatrixXd mWMBlock = getWMedBlock(svd, stBlockData.vecLogoDataBlock);
     Utilities::normalizeValues(mWMBlock);
 
     // DEBUG
@@ -530,9 +533,9 @@ void Watermark::setBlockData(IImageData&            hostImage,
 void Watermark::pupulateBlockIndexes(BlockData&        stBlockData,
                                      const IImageData& hostImage,
                                      int               iBlockCounter,
-                                     Type_Coordinates  typeCoordinates) {
+                                     Coordinates       tCoordinates) {
 
-    switch (typeCoordinates) {
+    switch (tCoordinates) {
     case TYPE_ADJACENT: {
         div_t divIndex = std::div((int) iBlockCounter,
                                   std::floor((double) hostImage.getWidth() / (double) _uiDimension));
@@ -561,7 +564,8 @@ void Watermark::getEmbeddedDataPerBlock(const IImageData& watermarkedImage,
     std::cout << std::endl;
 
     /* Calculate embedded decomposition */
-    Eigen::JacobiSVD<Eigen::MatrixXd> svd(mBlock, Eigen::ComputeFullU | Eigen::ComputeFullV);
+    //Eigen::JacobiSVD<Eigen::MatrixXd> svd(mBlock, Eigen::ComputeFullU | Eigen::ComputeFullV);
+    Lena::SVD svd(mBlock);
     extractData(svd, stBlockData);
 }
 

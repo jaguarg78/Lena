@@ -15,13 +15,13 @@ namespace SProcess {
                                unsigned int uiDimension,
                                unsigned int uiRedundancy,
                                unsigned int uiIterations,
-                               Type_Coordinates tyCoordinates) : Watermark(uiDimension,
-                                                                           uiRedundancy,
-                                                                           uiIterations,
-                                                                           DATA_SIZE_PER_BLOCK_DEFAULT,
-                                                                           tyCoordinates),
-                                                                 _iDelta (iDelta),
-                                                                 _type(type) {
+                               Coordinates  tCoordinates) : Watermark(uiDimension,
+                                                                      uiRedundancy,
+                                                                      uiIterations,
+                                                                      DATA_SIZE_PER_BLOCK_DEFAULT,
+                                                                      tCoordinates),
+                                                            _iDelta (iDelta),
+                                                            _type(type) {
 
         // DEBUG
         std::cout << "************************************" << std::endl;
@@ -46,7 +46,7 @@ namespace SProcess {
         return true;
     }
 
-    Eigen::MatrixXd WMProcess_17::getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    Eigen::MatrixXd WMProcess_17::getWMedBlock(const tSVD& rSVD,
                                                const std::vector<unsigned char>& vecData) {
 
         // DEBUG
@@ -98,7 +98,7 @@ namespace SProcess {
         return matWorkAround;
     }
 
-    void WMProcess_17::extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    void WMProcess_17::extractData(const Lena::SVD& rSVD,
                                    BlockData&  stBlockData) {
 
         // DEBUG
@@ -123,12 +123,12 @@ namespace SProcess {
                                unsigned int uiDimension,
                                unsigned int uiRedundancy,
                                unsigned int uiIterations,
-                               Type_Coordinates tyCoordinates) : Watermark(uiDimension,
-                                                                           uiRedundancy,
-                                                                           uiIterations,
-                                                                           DATA_SIZE_PER_BLOCK_DEFAULT,
-                                                                           tyCoordinates),
-                                                                 _iDelta (iDelta) {
+                               Coordinates  tCoordinates) : Watermark(uiDimension,
+                                                                      uiRedundancy,
+                                                                      uiIterations,
+                                                                      DATA_SIZE_PER_BLOCK_DEFAULT,
+                                                                      tCoordinates),
+                                                            _iDelta (iDelta) {
 
         // DEBUG
         std::cout << "************************************" << std::endl;
@@ -152,7 +152,7 @@ namespace SProcess {
         return true;
     }
 
-    Eigen::MatrixXd WMProcess_35::getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    Eigen::MatrixXd WMProcess_35::getWMedBlock(const tSVD& rSVD,
                                                const std::vector<unsigned char>& vecData) {
 
         // DEBUG
@@ -199,7 +199,7 @@ namespace SProcess {
         return matWorkAround;
     }
 
-    void WMProcess_35::extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    void WMProcess_35::extractData(const Lena::SVD& rSVD,
                                    BlockData&  stBlockData) {
 
         // DEBUG
@@ -221,12 +221,12 @@ namespace SProcess {
                                unsigned int uiDimension,
                                unsigned int uiRedundancy,
                                unsigned int uiIterations,
-                               Type_Coordinates tyCoordinates) : Watermark(uiDimension,
-                                                                           uiRedundancy,
-                                                                           uiIterations,
-                                                                           DATA_SIZE_PER_BLOCK_DEFAULT,
-                                                                           tyCoordinates),
-                                                                 _fQModule(fModule) {
+                               Coordinates  tCoordinates) : Watermark(uiDimension,
+                                                                     uiRedundancy,
+                                                                     uiIterations,
+                                                                     DATA_SIZE_PER_BLOCK_DEFAULT,
+                                                                     tCoordinates),
+                                                            _fQModule(fModule) {
 
         // DEBUG
         std::cout << "************************************" << std::endl;
@@ -250,7 +250,7 @@ namespace SProcess {
         return true;
     }
 
-    Eigen::MatrixXd WMProcess_74::getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    Eigen::MatrixXd WMProcess_74::getWMedBlock(const tSVD& rSVD,
                                                const std::vector<unsigned char>& vecData) {
 
         // Warning about block selection!!!!
@@ -298,7 +298,7 @@ namespace SProcess {
         return matWorkAround;
     }
 
-    void WMProcess_74::extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    void WMProcess_74::extractData(const Lena::SVD& rSVD,
                                    BlockData&  stBlockData) {
         // DEBUG
 //    std::cout << "Data to find the embedded value" << std::endl;
@@ -323,12 +323,12 @@ namespace UProcess {
                                unsigned int uiDimension,
                                unsigned int uiRedundancy,
                                unsigned int uiIterations,
-                               Type_Coordinates tyCoordinates) : Watermark(uiDimension,
-                                                                           uiRedundancy,
-                                                                           uiIterations,
-                                                                           ((uiDimension - (uiColumns + 1)) * ((uiDimension - (uiColumns + 1)) + 1)) / 2,
-                                                                           tyCoordinates),
-                                                                 _uiColumns(uiColumns) {
+                               Coordinates  tCoordinates) : Watermark(uiDimension,
+                                                                     uiRedundancy,
+                                                                     uiIterations,
+                                                                     ((uiDimension - (uiColumns + 1)) * ((uiDimension - (uiColumns + 1)) + 1)) / 2,
+                                                                     tCoordinates),
+                                                            _uiColumns(uiColumns) {
 
         if (_uiColumns > (uiDimension - 2) ||
             _uiColumns < MIN_PROTECTED_COLUMNS) {
@@ -360,7 +360,7 @@ namespace UProcess {
         return true;
     }
 
-    Eigen::MatrixXd WMProcess_43::getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    Eigen::MatrixXd WMProcess_43::getWMedBlock(const tSVD& rSVD,
                                                const std::vector<unsigned char>& vecData) {
 
         unsigned int uiProtected = rSVD.cols() - (_uiColumns + 1);
@@ -384,8 +384,8 @@ namespace UProcess {
         std::cout << matLeft << std::endl;
 
         unsigned int uiDataIndex = 0;
-        for (int iCol = _uiColumns; iCol < rSVD.cols(); iCol++) {
-            for (int iRow = 1; iRow < (rSVD.rows() - iCol); iRow++) {
+        for (unsigned iCol = _uiColumns; iCol < rSVD.cols(); iCol++) {
+            for (unsigned iRow = 1; iRow < (rSVD.rows() - iCol); iRow++) {
 
                 /*
                  * Change sign of values in column depending on the value that will be stored
@@ -405,8 +405,8 @@ namespace UProcess {
             Eigen::MatrixXd linSystemA(iCol, iCol);
             Eigen::VectorXd linSystemB = Eigen::VectorXd::Zero(iCol);
 
-            for (int iCompCol = 0; iCompCol < iCol; iCompCol++) {
-                for (int iRow = 0; iRow < rSVD.rows(); iRow++) {
+            for (unsigned iCompCol = 0; iCompCol < iCol; iCompCol++) {
+                for (unsigned iRow = 0; iRow < rSVD.rows(); iRow++) {
 
                     if (iRow < (rSVD.rows() - iCol)) {
                         linSystemB(iCompCol) -= matLeft.col(iCol)(iRow) * matLeft.col(iCompCol)(iRow);
@@ -425,7 +425,7 @@ namespace UProcess {
 //                      << linSystemB << std::endl
 //                      << "X: " << std::endl
 //                      << linSystemX << std::endl;
-            for (int iRow = (rSVD.rows() - iCol); iRow < rSVD.rows(); iRow++) {
+            for (unsigned iRow = (rSVD.rows() - iCol); iRow < rSVD.rows(); iRow++) {
                 matLeft(iRow, iCol) = linSystemX(iRow - (rSVD.rows() - iCol));
             }
 
@@ -458,7 +458,7 @@ namespace UProcess {
         return matWorkAround;
     }
 
-    void WMProcess_43::extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    void WMProcess_43::extractData(const Lena::SVD& rSVD,
                                    BlockData&  stBlockData) {
 
         // Warning about block selection!!!! Complexity of block
@@ -473,9 +473,9 @@ namespace UProcess {
 //        std::cout << (matLeft * rSVD.singularValues().asDiagonal() * matRight.transpose());
 //        std::cout << std::endl << std::endl;
 
-        unsigned int uiDataIndex = 0;
-        for (int iCols = _uiColumns; iCols < (rSVD.cols() - 1); iCols++) {
-            for (int iRows = 1; iRows < (rSVD.rows() - iCols); iRows++) {
+        unsigned uiDataIndex = 0;
+        for (unsigned iCols = _uiColumns; iCols < (rSVD.cols() - 1); iCols++) {
+            for (unsigned iRows = 1; iRows < (rSVD.rows() - iCols); iRows++) {
                 stBlockData.vecLogoDataBlock[uiDataIndex] +=
                         (matLeft(iRows, iCols) / std::abs((float) matLeft(iRows, iCols)) > 0) ?
                                 0x00 : 0x01;
@@ -500,12 +500,12 @@ namespace UProcess {
                                unsigned int uiDimension,
                                unsigned int uiRedundancy,
                                unsigned int uiIterations,
-                               Type_Coordinates tyCoordinates) : Watermark(uiDimension,
-                                                                           uiRedundancy,
-                                                                           uiIterations,
-                                                                           uiDataPerBlock,
-                                                                           tyCoordinates),
-                                                                 _fThreshold(fThreshold) {
+                               Coordinates  tCoordinates) : Watermark(uiDimension,
+                                                                      uiRedundancy,
+                                                                      uiIterations,
+                                                                      uiDataPerBlock,
+                                                                      tCoordinates),
+                                                            _fThreshold(fThreshold) {
 
         // DEBUG
         std::cout << "************************************" << std::endl;
@@ -528,7 +528,7 @@ namespace UProcess {
         return true;
     }
 
-    Eigen::MatrixXd WMProcess_09::getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    Eigen::MatrixXd WMProcess_09::getWMedBlock(const tSVD& rSVD,
                                               const std::vector<unsigned char>& vecData) {
 
         // Warning about block selection!!!! Complexity of block
@@ -573,7 +573,7 @@ namespace UProcess {
         return matWorkAround;
     }
 
-    void WMProcess_09::extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    void WMProcess_09::extractData(const Lena::SVD& rSVD,
                                    BlockData&  stBlockData) {
         // Warning about block selection!!!! Complexity of block
         Eigen::MatrixXd matLeft = -1 * rSVD.matrixU();
@@ -601,12 +601,12 @@ namespace UVProcess {
                                unsigned int uiDimension,
                                unsigned int uiRedundancy,
                                unsigned int uiIterations,
-                               Type_Coordinates tyCoordinates) : UProcess::WMProcess_09(fThreshold,
-                                                                                        DATA_SIZE_PER_BLOCK_18,
-                                                                                        uiDimension,
-                                                                                        uiRedundancy,
-                                                                                        uiIterations,
-                                                                                        tyCoordinates) {
+                               Coordinates  tCoordinates) : UProcess::WMProcess_09(fThreshold,
+                                                                                   DATA_SIZE_PER_BLOCK_18,
+                                                                                   uiDimension,
+                                                                                   uiRedundancy,
+                                                                                   uiIterations,
+                                                                                   tCoordinates) {
 
         /*
          * This parameter must be initialized by this way due to 09 does not have a parameter
@@ -635,7 +635,7 @@ namespace UVProcess {
         return true;
     }
 
-    Eigen::MatrixXd WMProcess_18::getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    Eigen::MatrixXd WMProcess_18::getWMedBlock(const tSVD& rSVD,
                                                const std::vector<unsigned char>& vecData) {
 
         UProcess::WMProcess_09::getWMedBlock(rSVD,
@@ -682,7 +682,7 @@ namespace UVProcess {
         return matWorkAround;
     }
 
-    void WMProcess_18::extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    void WMProcess_18::extractData(const Lena::SVD& rSVD,
                                    BlockData&  stBlockData) {
         // Warning about block selection!!!! Complexity of block
         Eigen::MatrixXd matLeft = -1 * rSVD.matrixU();

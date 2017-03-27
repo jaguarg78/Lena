@@ -67,6 +67,12 @@ typedef struct {
 #define PADDING_ADJUSTMENT_BYTES     4
 
 namespace Utilities {
+	struct SVD {
+		Eigen::MatrixXd  matU;
+		Eigen::MatrixXd  matS;
+		Eigen::MatrixXd  matV;
+	};
+
 	/* Debug functions */
 	namespace Debug {
 		const std::string getValuesFromVector(const std::vector<unsigned char>& vecInput,

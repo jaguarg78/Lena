@@ -9,70 +9,77 @@
 #define SRC_WATERMARK_H_
 
 #include "IImageData.h"
+#include "SVD.h"
+
+typedef Lena::SVD tSVD;
+//typedef Eigen::JacobiSVD<Eigen::MatrixXd>	tSVD;
 
 class Watermark {
 public:
-    enum Type_Coordinates {
+    typedef enum eCoordinates {
         TYPE_DIMENSIONS,
         TYPE_ADJACENT,
         TYPE_RANDOM,
         TYPE_CODED
-    };
+    } Coordinates;
 
-	Watermark(unsigned int uiDimension,
-              unsigned int uiRedundancy,
-              unsigned int uiIterations,
-              unsigned int uiDataPerBlock,
-              Type_Coordinates tyCoordinates);
-	virtual ~Watermark() throw();
+    Watermark(unsigned int uiDimension,
+            unsigned int uiRedundancy,
+            unsigned int uiIterations,
+            unsigned int uiDataPerBlock,
+            Coordinates  tCoordinates);
+    virtual ~Watermark() throw ();
 
-	int embedLogo(IImageData&       hostImage,
-                  const IImageData& logoImage);
-	int extractLogo(IImageData&       logoOutputImage,
-                    const IImageData& watermarkedImage);
-	void showProgress();
+    int embedLogo(IImageData& hostImage,
+            const IImageData& logoImage);
+    int extractLogo(IImageData& logoOutputImage,
+            const IImageData& watermarkedImage);
+    void showProgress();
 
 protected:
-	struct BlockData {
-        std::vector<unsigned char>  vecLogoDataBlock;  // Vector of values to be embedded per block
-        unsigned int                uiVBlock;          // V Coordinate of logo image
-        unsigned int                uiHBlock;          // H Coordinate of logo image in bytes
+    struct BlockData {
+        std::vector<unsigned char> vecLogoDataBlock; // Vector of values to be embedded per block
+        unsigned int uiVBlock; // V Coordinate of logo image
+        unsigned int uiHBlock; // H Coordinate of logo image in bytes
+        bool hasDebugInfo;
+        std::pair<int, int> pairDebugV;
+        std::pair<int, int> pairDebugH;
     };
 
-	/* Pure virtual functions */
-	virtual bool isEmbeddable(const IImageData& hostImage,
+    /* Pure virtual functions */
+    virtual bool isEmbeddable(const IImageData& hostImage,
                               const IImageData& logoImage) = 0;
-	virtual bool canBeExtracted(const IImageData& logoOutputImage,
+    virtual bool canBeExtracted(const IImageData& logoOutputImage,
                                 const IImageData& watermarkedImage) = 0;
-	virtual Eigen::MatrixXd getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+    virtual Eigen::MatrixXd getWMedBlock(const tSVD& rSVD,
                                          const std::vector<unsigned char>& vecData) = 0;
-	virtual void extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
-	                         BlockData&  stBlockData) = 0;
+    virtual void extractData(const tSVD& rSVD,
+                             BlockData&  stBlockData) = 0;
 
-    unsigned int	 _uiDimension;
-	unsigned int     _uiDataPerBlock;
-	unsigned int     _uiRedundancy;
-	unsigned int     _uiIterations;
+    unsigned int _uiDimension;
+    unsigned int _uiDataPerBlock;
+    unsigned int _uiRedundancy;
+    unsigned int _uiIterations;
 
-	Type_Coordinates _tyCoordinates;
+    Coordinates  _tCoordinates;
 
 private:
-	Watermark();
-	Watermark(const Watermark& rSource);
+    Watermark();
+    Watermark(const Watermark& rSource);
 
-	void embeddingProcess(IImageData&          hostImage,
-	                      const BlockData&     stBlockData);
-	Eigen::MatrixXd getBlockMatrix(const IImageData& hostImage,
-                                   const BlockData&  stBlockData);
-    void setBlockData(IImageData&            hostImage,
-                      const BlockData&       stBlockData,
+    void embeddingProcess(IImageData& hostImage,
+                          const BlockData& stBlockData);
+    Eigen::MatrixXd getBlockMatrix(const IImageData& hostImage,
+                                   const BlockData& stBlockData);
+    void setBlockData(IImageData& hostImage,
+                      const BlockData& stBlockData,
                       const Eigen::MatrixXd& mWMBlock);
-    void pupulateBlockIndexes(BlockData&        stBlockData,
+    void pupulateBlockIndexes(BlockData& stBlockData,
                               const IImageData& hostImage,
-                              int               iBlockCounter,
-                              Type_Coordinates  typeCoordinates = TYPE_ADJACENT);
+                              int iBlockCounter,
+                              Coordinates coordinates = TYPE_ADJACENT);
     void getEmbeddedDataPerBlock(const IImageData& watermarkedImage,
-                                 BlockData&  stBlockData);
+                                 BlockData& stBlockData);
 };
 
 #endif /* SRC_WATERMARK_H_ */

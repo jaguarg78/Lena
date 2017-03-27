@@ -43,12 +43,6 @@ namespace Utilities {
         GRAY_LUMINOSITY
     };
 
-    struct SVD {
-        Eigen::MatrixXd  matU;
-        Eigen::MatrixXd  matS;
-        Eigen::MatrixXd  matV;
-    };
-
     double MSE_RGB(const IImageData& rBMPRawImage,
                    const IImageData& rBMPModifiedImage);
     double PSNR_RGB(const IImageData& rBMPRawImage,

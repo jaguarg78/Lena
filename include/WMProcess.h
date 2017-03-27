@@ -23,7 +23,7 @@ namespace SProcess {
                      unsigned int uiDimension = BLOCK_DIMENSION_DEFAULT,
                      unsigned int uiRedundancy = REDUDANCY_DEFAULT_S,
                      unsigned int uiIterations = ITERATIONS_DEFAULT,
-                     Type_Coordinates tyCoordinates = TYPE_ADJACENT);
+                     Coordinates  tCoordinates = TYPE_ADJACENT);
         virtual ~WMProcess_17() throw();
 
         virtual bool isEmbeddable(const IImageData& hostImage,
@@ -31,10 +31,10 @@ namespace SProcess {
         virtual bool canBeExtracted(const IImageData& logoOutputImage,
                                     const IImageData& watermarkedImage);
 
-        virtual Eigen::MatrixXd getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual Eigen::MatrixXd getWMedBlock(const tSVD& rSVD,
                                              const std::vector<unsigned char>& vecData);
 
-        virtual void extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual void extractData(const Lena::SVD& rSVD,
                                  BlockData&  stBlockData);
     private:
         WMProcess_17();
@@ -49,7 +49,7 @@ namespace SProcess {
                      unsigned int uiDimension = BLOCK_DIMENSION_DEFAULT,
                      unsigned int uiRedundancy = REDUDANCY_DEFAULT_S,
                      unsigned int uiIterations = ITERATIONS_DEFAULT,
-                     Type_Coordinates tyCoordinates = TYPE_ADJACENT);
+                     Coordinates  tCoordinates = TYPE_ADJACENT);
         virtual ~WMProcess_35() throw();
 
         virtual bool isEmbeddable(const IImageData& hostImage,
@@ -57,10 +57,10 @@ namespace SProcess {
         virtual bool canBeExtracted(const IImageData& logoOutputImage,
                                             const IImageData& watermarkedImage);
 
-        virtual Eigen::MatrixXd getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual Eigen::MatrixXd getWMedBlock(const tSVD& rSVD,
                                              const std::vector<unsigned char>& vecData);
 
-        virtual void extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual void extractData(const Lena::SVD& rSVD,
                                  BlockData&  stBlockData);
     private:
         WMProcess_35();
@@ -75,7 +75,7 @@ namespace SProcess {
                      unsigned int uiDimension = BLOCK_DIMENSION_DEFAULT,
                      unsigned int uiRedundancy = REDUDANCY_DEFAULT_S,
                      unsigned int uiIterations = ITERATIONS_DEFAULT,
-                     Type_Coordinates tyCoordinates = TYPE_ADJACENT);
+                     Coordinates  tCoordinates = TYPE_ADJACENT);
         virtual ~WMProcess_74() throw();
 
         virtual bool isEmbeddable(const IImageData& hostImage,
@@ -83,10 +83,10 @@ namespace SProcess {
         virtual bool canBeExtracted(const IImageData& logoOutputImage,
                                     const IImageData& watermarkedImage);
 
-        virtual Eigen::MatrixXd getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual Eigen::MatrixXd getWMedBlock(const tSVD& rSVD,
                                              const std::vector<unsigned char>& vecData);
 
-        virtual void extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual void extractData(const Lena::SVD& rSVD,
                                  BlockData&  stBlockData);
     private:
         WMProcess_74();
@@ -104,7 +104,7 @@ namespace UProcess {
                      unsigned int uiDimension = BLOCK_DIMENSION_DEFAULT_43,
                      unsigned int uiRedundancy = REDUDANCY_DEFAULT,
                      unsigned int uiIterations = ITERATIONS_DEFAULT,
-                     Type_Coordinates tyCoordinates = TYPE_ADJACENT);
+                     Coordinates  tCoordinates = TYPE_ADJACENT);
         virtual ~WMProcess_43() throw();
 
         virtual bool isEmbeddable(const IImageData& hostImage,
@@ -112,10 +112,10 @@ namespace UProcess {
         virtual bool canBeExtracted(const IImageData& logoOutputImage,
                                     const IImageData& watermarkedImage);
 
-        virtual Eigen::MatrixXd getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual Eigen::MatrixXd getWMedBlock(const tSVD& rSVD,
                                              const std::vector<unsigned char>& vecData);
 
-        virtual void extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual void extractData(const Lena::SVD& rSVD,
                                  BlockData&  stBlockData);
     private:
         WMProcess_43();
@@ -131,7 +131,7 @@ namespace UProcess {
                      unsigned int uiDimension = BLOCK_DIMENSION_DEFAULT,
                      unsigned int uiRedundancy = REDUDANCY_DEFAULT,
                      unsigned int uiIterations = ITERATIONS_DEFAULT,
-                     Type_Coordinates tyCoordinates = TYPE_ADJACENT);
+                     Coordinates  tCoordinates = TYPE_ADJACENT);
         virtual ~WMProcess_09() throw();
 
         virtual bool isEmbeddable(const IImageData& hostImage,
@@ -139,10 +139,10 @@ namespace UProcess {
         virtual bool canBeExtracted(const IImageData& logoOutputImage,
                                     const IImageData& watermarkedImage);
 
-        virtual Eigen::MatrixXd getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual Eigen::MatrixXd getWMedBlock(const tSVD& rSVD,
                                              const std::vector<unsigned char>& vecData);
 
-        virtual void extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual void extractData(const Lena::SVD& rSVD,
                                  BlockData&  stBlockData);
     protected:
         float   _fThreshold;
@@ -163,7 +163,7 @@ namespace UVProcess {
                      unsigned int uiDimension = BLOCK_DIMENSION_DEFAULT,
                      unsigned int uiRedundancy = REDUDANCY_DEFAULT,
                      unsigned int uiIterations = ITERATIONS_DEFAULT,
-                     Type_Coordinates tyCoordinates = TYPE_ADJACENT);
+                     Coordinates  tCoordinates = TYPE_ADJACENT);
         virtual ~WMProcess_18() throw();
 
         virtual bool isEmbeddable(const IImageData& hostImage,
@@ -171,10 +171,10 @@ namespace UVProcess {
         virtual bool canBeExtracted(const IImageData& logoOutputImage,
                                     const IImageData& watermarkedImage);
 
-        virtual Eigen::MatrixXd getWMedBlock(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual Eigen::MatrixXd getWMedBlock(const tSVD& rSVD,
                                              const std::vector<unsigned char>& vecData);
 
-        virtual void extractData(const Eigen::JacobiSVD<Eigen::MatrixXd>& rSVD,
+        virtual void extractData(const Lena::SVD& rSVD,
                                  BlockData&  stBlockData);
     private:
         WMProcess_18();
